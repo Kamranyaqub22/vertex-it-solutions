@@ -1,0 +1,112 @@
+/* ============================================
+   SERVICES PAGE
+   ============================================ */
+
+.services-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: start;
+    margin-bottom: var(--space-16);
+}
+
+.services-intro h2 {
+    font-size: var(--font-size-4xl);
+}
+
+.services-intro p {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-relaxed);
+}
+
+@media (max-width: 768px) {
+    .services-intro {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+}
+
+/* ---- Category Header ---- */
+.service-category {
+    margin-bottom: var(--space-4);
+}
+
+.service-category__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    padding: var(--space-8) 0;
+    margin-bottom: var(--space-2);
+}
+
+.service-category__number {
+    font-size: var(--font-size-5xl);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--accent);
+    opacity: 0.2;
+    line-height: 1;
+    min-width: 80px;
+}
+
+.service-category__info h3 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-2);
+}
+
+.service-category__info p {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+/* ---- Service Accordion Items ---- */
+.service-accordion .accordion__trigger {
+    padding: var(--space-5) var(--space-4);
+}
+
+.service-accordion .accordion__body-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    padding-left: calc(32px + var(--space-10));
+}
+
+.service-accordion .accordion__body-inner .service-desc {
+    grid-column: 1;
+}
+
+.service-accordion .accordion__body-inner .service-features {
+    grid-column: 2;
+}
+
+@media (max-width: 768px) {
+    .service-accordion .accordion__body-inner {
+        grid-template-columns: 1fr;
+        padding-left: var(--space-4);
+    }
+}
+
+/* ---- Quick Contact Strip ---- */
+.services-contact-strip {
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8) var(--space-10);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    margin: var(--space-12) 0;
+}
+
+.services-contact-strip p {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+    .services-contact-strip {
+        flex-direction: column;
+        text-align: center;
+    }
+}

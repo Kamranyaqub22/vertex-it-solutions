@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise IT Solutions — Managed IT, Cyber Security &amp; Infrastructure</title>
+  <meta name="description" content="Complete IT environments for UK businesses. Managed IT, cyber security, ISO compliance, communications, physical security and specialist systems.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+
+    /* ══════════════════════════════════════════
+       DESIGN SYSTEM
+       Palette: warm cream from PNG reference
+       Type: Playfair Display + Manrope (Vertex IT)
+       Layout: editorial, ruled-grid, human-made
+    ══════════════════════════════════════════ */
+
+    :root {
+      --paper:    #f6f3ee;
+      --paper-2:  #edeae3;
+      --ink:      #0f0f0e;
+      --ink-2:    #2d2b28;
+      --ink-3:    #6a6660;
+      --ink-4:    #a39e97;
+      --rule:     #d9d5ce;
+      --rule-lt:  #ece9e3;
+      --accent:   #8c6d3f;
+      --accent-h: #7a5e34;
+      --dark:     #141210;
+      --white:    #ffffff;
+      --serif:    'Playfair Display', Georgia, serif;
+      --sans:     'Manrope', 'Helvetica Neue', sans-serif;
+      --max:      1300px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ::selection { background: var(--accent); color: #fff; }
+
+    /* utility */
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 52px; }
+    @media (max-width: 768px) { .wrap { padding: 0 24px; } }
+
+    /* buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 26px;
+      font-family: var(--sans); font-size: 0.78rem;
+      font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+      border: 1.5px solid transparent; cursor: pointer;
+      transition: background .2s, color .2s, border-color .2s, transform .18s;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn svg { flex-shrink: 0; transition: transform .18s; }
+    .btn:hover svg { transform: translateX(3px); }
+    .btn-filled  { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn-filled:hover { background: var(--accent-h); border-color: var(--accent-h); }
+    .btn-outline { background: transparent; color: var(--ink); border-color: var(--ink); }
+    .btn-outline:hover { background: var(--ink); color: var(--paper); }
+
+    /* ── NAV ─────────────────────────────── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(246,243,238,.93);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav__inner {
+      display: flex; align-items: center;
+      justify-content: space-between; height: 70px;
+    }
+    .nav__logo {
+      font-family: var(--serif); font-size: 1.3rem;
+      font-weight: 600; letter-spacing: -.01em; color: var(--ink);
+    }
+    .nav__logo span {
+      font-family: var(--sans); font-size: .5rem; font-weight: 700;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--accent); vertical-align: super; margin-left: 3px;
+    }
+    .nav__links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    @media (max-width: 900px) {
+      .nav__links { gap: 0; }
+      .nav__links li:not(:last-child) { display: none; }
+    }
+    .nav__links a {
+      font-size: .77rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: var(--ink-3); transition: color .18s;
+    }
+    .nav__links a:hover { color: var(--ink); }
+    .nav-cta {
+      background: var(--ink); color: #fff !important;
+      padding: 10px 22px;
+      font-size: .74rem; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase;
+      border: 1.5px solid var(--ink);
+      transition: background .18s, border-color .18s;
+    }
+    .nav-cta:hover { background: var(--accent) !important; border-color: var(--accent) !important; }
+
+    /* ── HERO ─────────────────────────────── */
+    .hero {
+      padding-top: 70px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 92vh;
+    }
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; min-height: auto; } }
+
+    .hero__text {
+      padding: 80px 52px 72px;
+      display: flex; flex-direction: column; justify-content: center;
+      border-right: 1px solid var(--rule);
+    }
+    @media (max-width: 900px) { .hero__text { padding: 60px 24px 48px; border-right: none; border-bottom: 1px solid var(--rule); } }
+
+    .hero__eyebrow { display: flex; align-items: center; gap: 14px; margin-bottom: 36px; }
+    .hero__eyebrow-line { width: 36px; height: 1px; background: var(--accent); flex-shrink: 0; }
+    .hero__eyebrow-text {
+      font-size: .68rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase; color: var(--accent);
+    }
+    .hero__h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 4.5vw, 5.2rem);
+      font-weight: 500; line-height: 1.06;
+      letter-spacing: -.025em; color: var(--ink); margin-bottom: 28px;
+    }
+    .hero__h1 i { font-style: italic; color: var(--ink-3); }
+    .hero__sub {
+      font-size: 1rem; font-weight: 300; line-height: 1.8;
+      color: var(--ink-3); max-width: 480px; margin-bottom: 48px;
+    }
+    .hero__actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+
+    .hero__visual { position: relative; overflow: hidden; background: var(--paper-2); }
+    @media (max-width: 900px) { .hero__visual { min-height: 340px; } }
+    .hero__photo {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center; display: block;
+      filter: contrast(.96) saturate(.85);
+    }
+    .hero__stats {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      display: grid; grid-template-columns: repeat(3,1fr);
+      background: rgba(15,15,14,.78); backdrop-filter: blur(6px);
+    }
+    .hero__stat {
+      padding: 24px; border-right: 1px solid rgba(255,255,255,.1);
+    }
+    .hero__stat:last-child { border-right: none; }
+    .hero__stat-num {
+      font-family: var(--serif); font-size: 2rem; font-weight: 400;
+      color: #fff; letter-spacing: -.04em; line-height: 1; margin-bottom: 5px;
+    }
+    .hero__stat-num em { color: var(--accent); font-style: normal; }
+    .hero__stat-label { font-size: .7rem; font-weight: 400; color: rgba(255,255,255,.45); letter-spacing: .04em; }
+
+    /* ── PILL STRIP ───────────────────────── */
+    .pill-strip { background: var(--white); border-bottom: 1px solid var(--rule); padding: 20px 0; }
+    .pill-strip__inner { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+    .pill-strip a {
+      font-size: .8rem; font-weight: 500; color: var(--ink-3);
+      letter-spacing: .02em; padding: 7px 18px;
+      border: 1px solid var(--rule); border-radius: 100px;
+      transition: background .18s, border-color .18s, color .18s;
+    }
+    .pill-strip a:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .pill-sep { color: var(--rule); font-size: 1.1rem; user-select: none; }
+
+    /* ── MARQUEE ──────────────────────────── */
+    .marquee { background: var(--dark); overflow: hidden; padding: 14px 0; }
+    .marquee__track { display: flex; animation: marquee 35s linear infinite; white-space: nowrap; }
+    .marquee__track:hover { animation-play-state: paused; }
+    .mi { font-size: .65rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.3); padding: 0 28px; flex-shrink: 0; }
+    .mi b { color: rgba(255,255,255,.8); }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── SECTION HEADER ───────────────────── */
+    .sec-head {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; padding: 80px 0 56px; border-bottom: 1px solid var(--rule);
+    }
+    @media (max-width: 768px) { .sec-head { grid-template-columns: 1fr; gap: 16px; padding: 56px 0 40px; } }
+    .sec-kicker {
+      font-size: .67rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 16px;
+    }
+    .sec-title {
+      font-family: var(--serif); font-size: clamp(1.9rem, 2.8vw, 2.8rem);
+      font-weight: 500; line-height: 1.18; letter-spacing: -.025em; color: var(--ink);
+    }
+    .sec-title i { font-style: italic; color: var(--ink-3); }
+    .sec-body-p { display: flex; align-items: flex-end; }
+    .sec-body-p p { font-size: .95rem; font-weight: 300; line-height: 1.8; color: var(--ink-3); max-width: 440px; }
+
+    /* ── CAPABILITIES 2x2 ─────────────────── */
+    .caps { background: var(--paper); }
+    .caps__grid { display: grid; grid-template-columns: 1fr 1fr; }
+    @media (max-width: 640px) { .caps__grid { grid-template-columns: 1fr; } }
+    .cap-cell {
+      padding: 52px 48px;
+      border-bottom: 1px solid var(--rule); border-right: 1px solid var(--rule);
+      transition: background .2s;
+    }
+    .cap-cell:nth-child(even) { border-right: none; }
+    .cap-cell:nth-last-child(-n+2) { border-bottom: none; }
+    @media (max-width: 640px) { .cap-cell { border-right: none !important; } .cap-cell:last-child { border-bottom: none; } }
+    .cap-cell:hover { background: var(--paper-2); }
+    .cap-cell__num { font-family: var(--serif); font-style: italic; font-size: .85rem; color: var(--ink-4); margin-bottom: 20px; }
+    .cap-cell h3 { font-family: var(--serif); font-size: 1.4rem; font-weight: 500; letter-spacing: -.02em; color: var(--ink); margin-bottom: 14px; line-height: 1.2; }
+    .cap-cell p { font-size: .87rem; font-weight: 300; line-height: 1.75; color: var(--ink-3); }
+
+    /* ── SERVICES LIST ────────────────────── */
+    .services { background: var(--white); }
+    .svc-list { display: grid; grid-template-columns: 1fr 1fr; }
+    @media (max-width: 768px) { .svc-list { grid-template-columns: 1fr; } }
+    .svc-row {
+      display: grid; grid-template-columns: 48px 1fr 22px;
+      gap: 18px; align-items: start;
+      padding: 34px 48px 34px 0;
+      border-bottom: 1px solid var(--rule); border-right: 1px solid var(--rule);
+      transition: background .2s; cursor: default;
+    }
+    .svc-list .svc-row:nth-child(even) {
+      border-right: none; padding-left: 48px; padding-right: 0;
+    }
+    @media (max-width: 768px) {
+      .svc-row { border-right: none !important; padding: 28px 0 !important; }
+      .svc-list .svc-row:nth-child(even) { padding-left: 0 !important; }
+    }
+    .svc-row:last-child,
+    .svc-row:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+    .svc-row:hover { background: var(--paper); }
+    .svc-num { font-family: var(--serif); font-style: italic; font-size: .75rem; color: var(--ink-4); padding-top: 2px; }
+    .svc-name { font-size: .93rem; font-weight: 600; color: var(--ink); margin-bottom: 7px; letter-spacing: -.01em; }
+    .svc-desc { font-size: .82rem; font-weight: 300; color: var(--ink-3); line-height: 1.7; }
+    .svc-arrow { color: var(--accent); opacity: 0; transition: opacity .2s; padding-top: 2px; font-size: .95rem; }
+    .svc-row:hover .svc-arrow { opacity: 1; }
+
+    /* ── ONE PROVIDER ─────────────────────── */
+    .one-provider { background: var(--paper-2); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .one-provider__inner { display: grid; grid-template-columns: 1fr 1fr; }
+    @media (max-width: 900px) { .one-provider__inner { grid-template-columns: 1fr; } }
+    .one-provider__img { position: relative; overflow: hidden; min-height: 420px; }
+    .one-provider__img img { width: 100%; height: 100%; object-fit: cover; filter: contrast(.95) saturate(.8); }
+    .one-provider__content {
+      padding: 72px 60px; display: flex; flex-direction: column;
+      justify-content: center; border-left: 1px solid var(--rule);
+    }
+    @media (max-width: 900px) { .one-provider__content { padding: 52px 24px; border-left: none; border-top: 1px solid var(--rule); } }
+    .one-provider__content h2 {
+      font-family: var(--serif); font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+      font-weight: 500; letter-spacing: -.025em; line-height: 1.15;
+      color: var(--ink); margin-bottom: 28px;
+    }
+    .one-provider__content h2 i { font-style: italic; color: var(--ink-3); }
+    .check-list { list-style: none; margin-bottom: 40px; }
+    .check-list li {
+      display: flex; align-items: flex-start; gap: 14px;
+      font-size: .9rem; font-weight: 400; color: var(--ink-2);
+      line-height: 1.6; padding: 10px 0; border-bottom: 1px solid var(--rule-lt);
+    }
+    .check-list li:last-child { border-bottom: none; }
+    .check-list li::before { content: '✓'; font-size: .75rem; font-weight: 700; color: var(--accent); flex-shrink: 0; padding-top: 2px; }
+
+    /* ── COMPLIANCE ───────────────────────── */
+    .compliance { background: var(--dark); padding: 88px 52px; }
+    @media (max-width: 768px) { .compliance { padding: 60px 24px; } }
+    .compliance__inner {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    @media (max-width: 900px) { .compliance__inner { grid-template-columns: 1fr; gap: 48px; } }
+    .c-kicker { font-size: .67rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 20px; }
+    .c-title { font-family: var(--serif); font-size: clamp(1.9rem, 2.8vw, 2.75rem); font-weight: 500; line-height: 1.2; letter-spacing: -.025em; color: #fff; margin-bottom: 22px; }
+    .c-body { font-size: .92rem; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,.45); }
+    .iso-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,.07); }
+    .iso-cell { background: rgba(255,255,255,.02); padding: 30px 26px; transition: background .2s; }
+    .iso-cell:hover { background: rgba(255,255,255,.05); }
+    .iso-code { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; color: #fff; letter-spacing: -.02em; margin-bottom: 6px; }
+    .iso-label { font-size: .72rem; font-weight: 400; color: rgba(255,255,255,.3); letter-spacing: .03em; line-height: 1.5; }
+    .iso-wide {
+      grid-column: span 2; background: rgba(140,109,63,.16);
+      border-top: 1px solid rgba(140,109,63,.35); padding: 20px 26px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .iso-wide .iso-code { font-size: 1rem; margin-bottom: 3px; }
+
+    /* ── WHY US ───────────────────────────── */
+    .why { padding: 0 0 88px; background: var(--paper); }
+    .why__grid {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      border: 1px solid var(--rule);
+    }
+    @media (max-width: 900px) { .why__grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 540px) { .why__grid { grid-template-columns: 1fr; } }
+    .why-card { padding: 38px 30px; border-right: 1px solid var(--rule); transition: background .2s; }
+    .why-card:last-child { border-right: none; }
+    @media (max-width: 900px) {
+      .why-card:nth-child(2) { border-right: none; }
+      .why-card:nth-child(3),.why-card:nth-child(4) { border-top: 1px solid var(--rule); }
+      .why-card:nth-child(4) { border-right: none; }
+    }
+    @media (max-width: 540px) { .why-card { border-right: none; border-top: 1px solid var(--rule); } .why-card:first-child { border-top: none; } }
+    .why-card:hover { background: var(--paper-2); }
+    .why-mark { font-size: 1.1rem; margin-bottom: 26px; color: var(--accent); display: block; }
+    .why-title { font-size: .9rem; font-weight: 700; color: var(--ink); margin-bottom: 10px; letter-spacing: -.01em; }
+    .why-body { font-size: .8rem; font-weight: 300; color: var(--ink-3); line-height: 1.75; }
+
+    /* ── SECTORS ──────────────────────────── */
+    .sectors { background: var(--white); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 64px 0; }
+    .sectors__head { text-align: center; margin-bottom: 44px; }
+    .sectors__head p { font-size: .7rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-4); }
+    .sectors__grid { display: grid; grid-template-columns: repeat(4,1fr); border: 1px solid var(--rule); }
+    @media (max-width: 640px) { .sectors__grid { grid-template-columns: 1fr 1fr; } }
+    .sector-cell {
+      padding: 32px 28px; border-right: 1px solid var(--rule);
+      display: flex; flex-direction: column; align-items: center;
+      gap: 14px; text-align: center; transition: background .2s; cursor: default;
+    }
+    .sector-cell:last-child { border-right: none; }
+    @media (max-width: 640px) { .sector-cell:nth-child(2) { border-right: none; } .sector-cell:nth-child(3),.sector-cell:nth-child(4) { border-top: 1px solid var(--rule); } .sector-cell:nth-child(4) { border-right: none; } }
+    .sector-cell:hover { background: var(--paper); }
+    .sector-icon { width: 44px; height: 44px; border: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; color: var(--ink-3); }
+    .sector-icon svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .sector-label { font-size: .78rem; font-weight: 600; color: var(--ink); letter-spacing: .02em; }
+
+    /* ── CONTACT ──────────────────────────── */
+    .contact-section { background: var(--paper-2); border-top: 1px solid var(--rule); }
+    .contact__inner { display: grid; grid-template-columns: 1fr 1fr; }
+    @media (max-width: 900px) { .contact__inner { grid-template-columns: 1fr; } }
+    .contact__left {
+      padding: 80px 52px; display: flex; flex-direction: column;
+      justify-content: center; border-right: 1px solid var(--rule);
+    }
+    @media (max-width: 900px) { .contact__left { padding: 60px 24px; border-right: none; border-bottom: 1px solid var(--rule); } }
+    .contact__left h2 { font-family: var(--serif); font-size: clamp(2rem, 3vw, 2.9rem); font-weight: 500; letter-spacing: -.025em; line-height: 1.15; color: var(--ink); margin-bottom: 18px; }
+    .contact__left h2 i { font-style: italic; color: var(--ink-3); }
+    .contact__left > p { font-size: .93rem; font-weight: 300; color: var(--ink-3); line-height: 1.8; max-width: 400px; margin-bottom: 40px; }
+    .contact__hotline { margin-top: 8px; }
+    .contact__hotline-label { font-size: .66rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 6px; }
+    .contact__hotline-num { font-family: var(--serif); font-size: 2rem; font-weight: 400; letter-spacing: -.03em; color: var(--accent); }
+    .contact__hotline-sub { font-size: .72rem; color: var(--ink-4); margin-top: 4px; }
+    .contact__form { padding: 72px 52px; background: var(--white); }
+    @media (max-width: 900px) { .contact__form { padding: 52px 24px; } }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
+    .form-group { margin-bottom: 22px; }
+    .form-group label { display: block; font-size: .66rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--ink); margin-bottom: 8px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: 11px 14px;
+      border: 1px solid var(--rule); background: var(--paper);
+      font-family: var(--sans); font-size: .87rem; color: var(--ink);
+      outline: none; transition: border-color .2s, background .2s;
+      -webkit-appearance: none; border-radius: 0;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--accent); background: #fff; }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .btn-submit {
+      width: 100%; padding: 14px; background: var(--ink); color: #fff;
+      border: none; cursor: pointer; font-family: var(--sans);
+      font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      transition: background .2s;
+    }
+    .btn-submit:hover { background: var(--accent); }
+
+    /* ── FOOTER ───────────────────────────── */
+    footer { border-top: 1px solid var(--rule); background: var(--paper); }
+    .footer__top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 52px; padding: 64px 0 52px; border-bottom: 1px solid var(--rule);
+    }
+    @media (max-width: 900px) { .footer__top { grid-template-columns: 1fr 1fr; gap: 36px; } }
+    @media (max-width: 540px) { .footer__top { grid-template-columns: 1fr; } }
+    .footer__brand { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; color: var(--ink); margin-bottom: 12px; }
+    .footer__tagline { font-size: .82rem; font-weight: 300; color: var(--ink-3); line-height: 1.7; max-width: 280px; margin-bottom: 22px; }
+    .footer__contact a { display: block; font-size: .8rem; color: var(--ink-3); margin-bottom: 6px; transition: color .18s; }
+    .footer__contact a:hover { color: var(--accent); }
+    .footer__col-title { font-size: .65rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 18px; }
+    .footer__links { list-style: none; }
+    .footer__links li { margin-bottom: 9px; }
+    .footer__links a { font-size: .82rem; font-weight: 400; color: var(--ink-3); transition: color .18s; }
+    .footer__links a:hover { color: var(--accent); }
+    .footer__bottom { padding: 22px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer__copy { font-size: .71rem; color: var(--ink-4); }
+    .footer__legal { display: flex; gap: 22px; }
+    .footer__legal a { font-size: .71rem; color: var(--ink-4); transition: color .18s; }
+    .footer__legal a:hover { color: var(--ink-3); }
+
+    /* ── SCROLL REVEAL ─────────────────────── */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: .08s; }
+    .reveal-delay-2 { transition-delay: .16s; }
+    .reveal-delay-3 { transition-delay: .24s; }
+
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════════════ -->
+<nav class="nav" id="top">
+  <div class="wrap">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Vertex IT<span>Solutions</span></a>
+      <ul class="nav__links">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="industries.html">Industries</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ══ HERO ══════════════════════════════════════════ -->
+<header class="hero" id="home">
+  <!-- Left: headline + CTA -->
+  <div class="hero__text">
+    <div class="hero__eyebrow">
+      <div class="hero__eyebrow-line"></div>
+      <span class="hero__eyebrow-text">Complete IT Solutions for UK Business</span>
+    </div>
+    <h1 class="hero__h1">
+      Technology,<br>
+      security and<br>
+      infrastructure —<br>
+      <i>delivered with clarity.</i>
+    </h1>
+    <p class="hero__sub">We design, implement, and support complete IT environments for UK businesses — covering managed IT, cyber security, compliance, communications, and specialist systems.</p>
+    <div class="hero__actions">
+      <a href="#contact" class="btn btn-filled">Request Consultation</a>
+      <a href="#capabilities" class="btn btn-outline">View Services
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <!-- Right: boardroom photo + stats overlay -->
+  <div class="hero__visual">
+    <img
+      class="hero__photo"
+      src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"
+      alt="Modern boardroom with technology"
+      loading="eager"
+    >
+    <div class="hero__stats">
+      <div class="hero__stat">
+        <div class="hero__stat-num">500<em>+</em></div>
+        <div class="hero__stat-label">Businesses supported</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-num">15<em>+</em></div>
+        <div class="hero__stat-label">Years of expertise</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-num">24<em>/7</em></div>
+        <div class="hero__stat-label">Ongoing support</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ══ PILL STRIP ══════════════════════════════════════ -->
+<div class="pill-strip">
+  <div class="pill-strip__inner">
+    <a href="#capabilities">Managed IT</a>
+    <span class="pill-sep">·</span>
+    <a href="#capabilities">Cyber Security</a>
+    <span class="pill-sep">·</span>
+    <a href="#compliance">ISO Compliance</a>
+    <span class="pill-sep">·</span>
+    <a href="#capabilities">Connectivity</a>
+    <span class="pill-sep">·</span>
+    <a href="#capabilities">Infrastructure</a>
+    <span class="pill-sep">·</span>
+    <a href="#capabilities">Physical Security</a>
+    <span class="pill-sep">·</span>
+    <a href="#capabilities">Fleet Management</a>
+  </div>
+</div>
+
+
+<!-- ══ MARQUEE ══════════════════════════════════════════ -->
+<div class="marquee">
+  <div class="marquee__track">
+    <span class="mi"><b>Managed IT</b></span><span class="mi">·</span>
+    <span class="mi"><b>Cybersecurity</b></span><span class="mi">·</span>
+    <span class="mi"><b>ISO 27001</b></span><span class="mi">·</span>
+    <span class="mi"><b>Cloud Services</b></span><span class="mi">·</span>
+    <span class="mi"><b>CCTV &amp; Security</b></span><span class="mi">·</span>
+    <span class="mi"><b>Disaster Recovery</b></span><span class="mi">·</span>
+    <span class="mi"><b>Pen Testing</b></span><span class="mi">·</span>
+    <span class="mi"><b>Fleet Management</b></span><span class="mi">·</span>
+    <span class="mi"><b>Telephony</b></span><span class="mi">·</span>
+    <span class="mi"><b>Boardroom Solutions</b></span><span class="mi">·</span>
+    <span class="mi"><b>Fire &amp; Safety</b></span><span class="mi">·</span>
+    <span class="mi"><b>Electrical Engineering</b></span><span class="mi">·</span>
+    <span class="mi"><b>Hardware Supply</b></span><span class="mi">·</span>
+    <span class="mi"><b>Wireless Broadband</b></span><span class="mi">·</span>
+    <!-- duplicate for seamless loop -->
+    <span class="mi"><b>Managed IT</b></span><span class="mi">·</span>
+    <span class="mi"><b>Cybersecurity</b></span><span class="mi">·</span>
+    <span class="mi"><b>ISO 27001</b></span><span class="mi">·</span>
+    <span class="mi"><b>Cloud Services</b></span><span class="mi">·</span>
+    <span class="mi"><b>CCTV &amp; Security</b></span><span class="mi">·</span>
+    <span class="mi"><b>Disaster Recovery</b></span><span class="mi">·</span>
+    <span class="mi"><b>Pen Testing</b></span><span class="mi">·</span>
+    <span class="mi"><b>Fleet Management</b></span><span class="mi">·</span>
+    <span class="mi"><b>Telephony</b></span><span class="mi">·</span>
+    <span class="mi"><b>Boardroom Solutions</b></span><span class="mi">·</span>
+    <span class="mi"><b>Fire &amp; Safety</b></span><span class="mi">·</span>
+    <span class="mi"><b>Electrical Engineering</b></span><span class="mi">·</span>
+    <span class="mi"><b>Hardware Supply</b></span><span class="mi">·</span>
+    <span class="mi"><b>Wireless Broadband</b></span><span class="mi">·</span>
+  </div>
+</div>
+
+
+<!-- ══ CAPABILITIES 2×2 ══════════════════════════════ -->
+<section class="caps" id="capabilities">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="sec-kicker">Our Capabilities</div>
+        <div class="sec-title">Every dimension<br>of your technology.</div>
+      </div>
+      <div class="sec-body-p">
+        <p>We cover the full stack — from network cabling and physical security to cloud licensing, ISO certification, and specialist engineering. No gaps, no handoffs, no blame-shifting.</p>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="caps__grid">
+      <div class="cap-cell reveal">
+        <div class="cap-cell__num">i.</div>
+        <h3>Managed IT &amp; Support</h3>
+        <p>Comprehensive managed IT services for ongoing support, maintenance, and infrastructure management. Proactive monitoring and helpdesk included.</p>
+      </div>
+      <div class="cap-cell reveal reveal-delay-1">
+        <div class="cap-cell__num">ii.</div>
+        <h3>Cyber Security &amp; Compliance</h3>
+        <p>Advanced cyber security solutions, compliance management, and ISO certification support. Pen testing, audits, and disaster recovery planning.</p>
+      </div>
+      <div class="cap-cell reveal reveal-delay-2">
+        <div class="cap-cell__num">iii.</div>
+        <h3>Communications &amp; Connectivity</h3>
+        <p>Business telephony, call centre solutions, wireless networking, and rural broadband where fixed-line infrastructure is unavailable.</p>
+      </div>
+      <div class="cap-cell reveal reveal-delay-3">
+        <div class="cap-cell__num">iv.</div>
+        <h3>Infrastructure &amp; Physical Security</h3>
+        <p>CCTV systems, access control, boardroom A/V, and electrical engineering works — all installed and maintained by our team.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ ALL SERVICES LIST ══════════════════════════════ -->
+<section class="services" id="all-services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="sec-kicker">Complete Service List</div>
+        <div class="sec-title">Everything your<br>business needs.</div>
+      </div>
+      <div class="sec-body-p">
+        <p>One team with full accountability. No subcontractors, no finger-pointing. From the first cable to the last compliance certificate.</p>
+      </div>
+    </div>
+    <div class="svc-list reveal">
+
+      <div class="svc-row">
+        <div class="svc-num">01</div>
+        <div>
+          <div class="svc-name">Managed IT Services</div>
+          <div class="svc-desc">Proactive monitoring, helpdesk, patch management, and infrastructure oversight. We keep systems healthy before problems arise.</div>
+        </div>
+        <div class="svc-arrow">→</div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-num">02</div>
+        <div>
+          <div class="svc-name">Cybersecurity</div>
+          <div class="svc-desc">End-to-end security including pen testing, vulnerability assessments, threat monitoring, and incident response.</div>
+        </div>
+        <div class="svc-arrow">→</div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-num">03</div>
+        <div>
+          <div class="svc-name">Cloud Services &amp; Licensing</div>
+          <div class="svc-desc">Microsoft 365, Azure, CRM platforms, and cloud solution licences tailored to your workflows and team size.</div>
+        </div>
+        <div class="svc-arrow">→</div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-num">04</div>
+        <div>
+          <div class="svc-name">Telephony &amp; Call Centre Solutions</div>
+          <div class="svc-desc">Microsoft and telephony licences, call centre infrastructure, landlines, and mobile fleet management solutions.</div>
+        </div>
+        <div class="svc-arrow">→</div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-num">05</div>
+        <div>
+          <div class="svc-name">Fire &amp; Security — CCTV</div>
+          <div class="svc-desc">IP camera systems, fire detection, access control, and full physical security infrastructure design and installation.</div>
+        </div>
+        <div class="svc-arrow">→</div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-num">06</div>
+        <div>
+          <div class="svc-name">Boardroom &amp; Meeting Room Solutions</div>
+          <div class="svc-desc">Integrated AV, video conferencing, smart displays, and control systems for productive meeting spaces.</div>
+        </div>
+        <div class="svc-arrow">→</div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-num">07</div>
+        <div>
+          <div class="svc-name">Networking &amp; Wireless Connectivity</div>
+          <div class="svc-desc">LAN/WAN, Wi-Fi, and wireless broadband for locations where landline infrastructure is unavailable.</div>
+        </div>
+        <div class="svc-arrow">→</div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-num">08</div>
+        <div>
+          <div class="svc-name">Hardware Supply &amp; Deployment</div>
+          <div class="svc-desc">PCs, laptops, mobiles, and networking hardware — sourced, configured to spec, and deployed with zero disruption.</div>
+        </div>
+        <div class="svc-arrow">→</div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-num">09</div>
+        <div>
+          <div class="svc-name">Electrical &amp; Engineering Works</div>
+          <div class="svc-desc">Structured cabling, data room build-outs, power distribution, and full electrical project delivery on any scale.</div>
+        </div>
+        <div class="svc-arrow">→</div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-num">10</div>
+        <div>
+          <div class="svc-name">Disaster Recovery &amp; Audits</div>
+          <div class="svc-desc">DR planning, backup solutions, recovery testing, and thorough IT audits to ensure full business continuity.</div>
+        </div>
+        <div class="svc-arrow">→</div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-num">11</div>
+        <div>
+          <div class="svc-name">Software Support</div>
+          <div class="svc-desc">Application management, updates, bug resolution, and bespoke software solutions for business-critical systems.</div>
+        </div>
+        <div class="svc-arrow">→</div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-num">12</div>
+        <div>
+          <div class="svc-name">Fleet Management Solutions</div>
+          <div class="svc-desc">GPS tracking, telematics, driver behaviour monitoring, and full fleet visibility to reduce operational cost and risk.</div>
+        </div>
+        <div class="svc-arrow">→</div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-num">13</div>
+        <div>
+          <div class="svc-name">Mobile, TV &amp; Electronics Repair</div>
+          <div class="svc-desc">Maintenance contracts and repair services for mobiles, screens and electronics — keeping your assets operational.</div>
+        </div>
+        <div class="svc-arrow">→</div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-num">14</div>
+        <div>
+          <div class="svc-name">Custom IT Solutions</div>
+          <div class="svc-desc">If it's not listed, we'll engineer it. Bespoke solutions designed from the ground up around your exact requirements.</div>
+        </div>
+        <div class="svc-arrow">→</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ ONE PROVIDER ══════════════════════════════════ -->
+<section class="one-provider">
+  <div class="one-provider__inner">
+    <div class="one-provider__img">
+      <img
+        src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80"
+        alt="IT team working together"
+        loading="lazy"
+      >
+    </div>
+    <div class="one-provider__content reveal">
+      <h2>One provider.<br><i>Complete delivery.</i></h2>
+      <ul class="check-list">
+        <li>End-to-end IT systems, from cabling to cloud</li>
+        <li>Security and compliance built into every solution</li>
+        <li>Ongoing support and maintenance as standard</li>
+        <li>Tailored solutions — not off-the-shelf selling</li>
+        <li>A single point of contact for every technology need</li>
+        <li>Proven across professional services, retail, logistics and healthcare</li>
+      </ul>
+      <a href="#contact" class="btn btn-filled" style="align-self:flex-start">Request a Consultation</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ COMPLIANCE ═══════════════════════════════════════ -->
+<div class="compliance" id="compliance">
+  <div class="compliance__inner reveal">
+    <div>
+      <div class="c-kicker">Compliance &amp; Standards</div>
+      <div class="c-title">We keep your business<br>audit-ready.</div>
+      <p class="c-body">We manage the full compliance lifecycle — from initial gap analysis through to certification and ongoing maintenance. Our team ensures you meet ISO standards and stay ahead of evolving regulations, so you never face an audit unprepared.</p>
+    </div>
+    <div>
+      <div class="iso-grid">
+        <div class="iso-cell">
+          <div class="iso-code">ISO 27001</div>
+          <div class="iso-label">Information Security Management</div>
+        </div>
+        <div class="iso-cell">
+          <div class="iso-code">ISO 14002</div>
+          <div class="iso-label">Environmental Management</div>
+        </div>
+        <div class="iso-cell">
+          <div class="iso-code">ISO 9000</div>
+          <div class="iso-label">Quality Management Systems</div>
+        </div>
+        <div class="iso-cell">
+          <div class="iso-code">Cyber</div>
+          <div class="iso-label">Essentials &amp; GDPR Compliance Support</div>
+        </div>
+        <div class="iso-cell iso-wide">
+          <div>
+            <div class="iso-code">Ongoing Compliance</div>
+            <div class="iso-label">Continuous monitoring and regulatory update management</div>
+          </div>
+          <svg width="20" height="20" viewBox="0 0 22 22" fill="none" style="opacity:.35;flex-shrink:0">
+            <path d="M4 11h14M11 4l7 7-7 7" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ WHY US ════════════════════════════════════════════ -->
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="sec-kicker">Why Choose Us</div>
+        <div class="sec-title">One partner.<br><i>Complete ownership.</i></div>
+      </div>
+      <div class="sec-body-p">
+        <p>Most technology problems stem from fragmented vendors. We eliminate that entirely. One team, one contract, full accountability from end to end.</p>
+      </div>
+    </div>
+    <div class="why__grid reveal">
+      <div class="why-card">
+        <span class="why-mark">◎</span>
+        <div class="why-title">Truly End-to-End</div>
+        <div class="why-body">Cabling to cloud, cameras to certifications. Every layer of your technology stack — managed by one accountable team with no handoffs.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-mark">▲</span>
+        <div class="why-title">Proactive, Not Reactive</div>
+        <div class="why-body">We monitor and resolve issues before they reach you. Fewer surprises, less downtime, and far more focus on your actual business.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-mark">◈</span>
+        <div class="why-title">Compliance Expertise</div>
+        <div class="why-body">We don't just implement technology — we ensure it meets the standards your industry requires. ISO guidance included on every engagement.</div>
+      </div>
+      <div class="why-card">
+        <span class="why-mark">⬡</span>
+        <div class="why-title">Vendor-Neutral Advice</div>
+        <div class="why-body">We recommend what's right for your business, not what's easiest for us. Your outcomes drive every technology decision we make.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ SECTORS ════════════════════════════════════════════ -->
+<div class="sectors">
+  <div class="wrap">
+    <div class="sectors__head reveal">
+      <p>Trusted by businesses across key sectors</p>
+    </div>
+    <div class="sectors__grid reveal">
+      <div class="sector-cell">
+        <div class="sector-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+        </div>
+        <span class="sector-label">Professional Services</span>
+      </div>
+      <div class="sector-cell">
+        <div class="sector-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <span class="sector-label">Retail &amp; Hospitality</span>
+      </div>
+      <div class="sector-cell">
+        <div class="sector-icon">
+          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <span class="sector-label">Logistics &amp; Transport</span>
+      </div>
+      <div class="sector-cell">
+        <div class="sector-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <span class="sector-label">Healthcare</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ CONTACT ════════════════════════════════════════════ -->
+<section class="contact-section" id="contact">
+  <div class="contact__inner">
+
+    <div class="contact__left reveal">
+      <h2>Ready to simplify<br>your <i>technology?</i></h2>
+      <p>Book a free, no-obligation consultation with one of our engineers. We'll assess your current setup and present a clear proposal within 2 working days.</p>
+      <a href="#contact" class="btn btn-filled" style="align-self:flex-start;margin-bottom:40px">Book Free Consultation</a>
+      <div class="contact__hotline">
+        <div class="contact__hotline-label">Emergency Support Line</div>
+        <div class="contact__hotline-num">0800 000 0000</div>
+        <div class="contact__hotline-sub">Available 24 hours · 7 days a week</div>
+      </div>
+    </div>
+
+    <div class="contact__form reveal reveal-delay-1">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="f-first">First Name</label>
+          <input type="text" id="f-first" name="first_name" placeholder="John" autocomplete="given-name">
+        </div>
+        <div class="form-group">
+          <label for="f-last">Last Name</label>
+          <input type="text" id="f-last" name="last_name" placeholder="Smith" autocomplete="family-name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="f-company">Company Name</label>
+        <input type="text" id="f-company" name="company" placeholder="Acme Ltd" autocomplete="organization">
+      </div>
+      <div class="form-group">
+        <label for="f-email">Business Email</label>
+        <input type="email" id="f-email" name="email" placeholder="john@company.co.uk" autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label for="f-service">Service of Interest</label>
+        <select id="f-service" name="service">
+          <option value="" disabled selected>Select a service area…</option>
+          <option>Managed IT Services</option>
+          <option>Cybersecurity &amp; Compliance</option>
+          <option>Cloud Services &amp; Licensing</option>
+          <option>Fire, CCTV &amp; Physical Security</option>
+          <option>Boardroom &amp; Meeting Room</option>
+          <option>Networking &amp; Connectivity</option>
+          <option>Hardware Supply</option>
+          <option>Electrical &amp; Engineering</option>
+          <option>Fleet Management</option>
+          <option>Multiple Services</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="f-message">Brief Description</label>
+        <textarea id="f-message" name="message" placeholder="Tell us about your current setup or the problem you're looking to solve…"></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Submit Enquiry →</button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ════════════════════════════════════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="footer__top">
+      <div>
+        <div class="footer__brand">Vertex IT Solutions</div>
+        <p class="footer__tagline">Complete IT environments for UK businesses. From managed services and cyber security to physical infrastructure and ISO compliance.</p>
+        <div class="footer__contact">
+          <a href="tel:08000000000">0800 000 0000</a>
+          <a href="mailto:info@vertexit.co.uk">info@vertexit.co.uk</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__col-title">Services</div>
+        <ul class="footer__links">
+          <li><a href="managed-it.html">Managed IT</a></li>
+          <li><a href="cybersecurity.html">Cybersecurity</a></li>
+          <li><a href="cloud-communications.html">Cloud &amp; Comms</a></li>
+          <li><a href="infrastructure.html">Infrastructure</a></li>
+          <li><a href="compliance.html">Compliance</a></li>
+          <li><a href="services.html">All Services</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">Compliance</div>
+        <ul class="footer__links">
+          <li><a href="compliance.html">ISO 27001</a></li>
+          <li><a href="compliance.html">ISO 9001</a></li>
+          <li><a href="compliance.html">ISO 14001</a></li>
+          <li><a href="compliance.html">Cyber Essentials</a></li>
+          <li><a href="cybersecurity.html">Pen Testing</a></li>
+          <li><a href="cybersecurity.html">GDPR Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">Company</div>
+        <ul class="footer__links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="industries.html">Industries</a></li>
+          <li><a href="about.html">Our Team</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html">Client Portal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">© 2026 Vertex IT Solutions Ltd. All rights reserved. Registered in England &amp; Wales.</span>
+      <div class="footer__legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.07, rootMargin: '0px 0px -48px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

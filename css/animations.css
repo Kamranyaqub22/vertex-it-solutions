@@ -1,0 +1,263 @@
+/* ============================================
+   ANIMATIONS — Keyframes, Scroll Reveals,
+   Hover Effects, Loading States
+   ============================================ */
+
+/* ---- Scroll Reveal ---- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal--left {
+    transform: translateX(-30px);
+}
+
+.reveal--left.is-visible {
+    transform: translateX(0);
+}
+
+.reveal--right {
+    transform: translateX(30px);
+}
+
+.reveal--right.is-visible {
+    transform: translateX(0);
+}
+
+.reveal--scale {
+    transform: scale(0.95);
+}
+
+.reveal--scale.is-visible {
+    transform: scale(1);
+}
+
+/* Stagger delays for grid children */
+.reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 100ms; opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 200ms; opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 300ms; opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 400ms; opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 500ms; opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-visible > *:nth-child(7) { transition-delay: 600ms; opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-visible > *:nth-child(8) { transition-delay: 700ms; opacity: 1; transform: translateY(0); }
+
+/* ---- Hero Animations ---- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.anim-fade-in-up {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.anim-fade-in-up-delay-1 {
+    animation: fadeInUp 0.8s ease 0.15s forwards;
+    opacity: 0;
+}
+
+.anim-fade-in-up-delay-2 {
+    animation: fadeInUp 0.8s ease 0.3s forwards;
+    opacity: 0;
+}
+
+.anim-fade-in-up-delay-3 {
+    animation: fadeInUp 0.8s ease 0.45s forwards;
+    opacity: 0;
+}
+
+.anim-fade-in-right {
+    animation: fadeInRight 0.8s ease 0.4s forwards;
+    opacity: 0;
+}
+
+/* ---- Floating / Background Animations ---- */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes floatSlow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(3deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); }
+    50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.4); }
+}
+
+.anim-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.anim-float-slow {
+    animation: floatSlow 8s ease-in-out infinite;
+}
+
+.anim-pulse {
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.anim-glow {
+    animation: glow 3s ease-in-out infinite;
+}
+
+/* ---- Hero Geometric Shapes ---- */
+@keyframes orbit {
+    from { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+}
+
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes dash {
+    to { stroke-dashoffset: 0; }
+}
+
+.anim-orbit {
+    animation: orbit 20s linear infinite;
+}
+
+.anim-spin-slow {
+    animation: spin-slow 30s linear infinite;
+}
+
+/* ---- Counter Animation (handled via JS) ---- */
+.counter {
+    display: inline-block;
+}
+
+/* ---- Shimmer / Loading ---- */
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.anim-shimmer {
+    background: linear-gradient(
+        90deg,
+        var(--surface-alt) 25%,
+        var(--border) 50%,
+        var(--surface-alt) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* ---- Hover effects ---- */
+.hover-lift {
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-xl);
+}
+
+.hover-glow {
+    transition: box-shadow var(--transition-base);
+}
+
+.hover-glow:hover {
+    box-shadow: var(--shadow-glow-strong);
+}
+
+/* ---- Line drawing for decorative elements ---- */
+@keyframes drawLine {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+.anim-draw-line {
+    animation: drawLine 1s ease forwards;
+}
+
+/* ---- Gradient Shift (for hero bg) ---- */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.anim-gradient {
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+}
+
+/* ---- Reduce Motion ---- */
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .reveal-stagger > * {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .anim-float,
+    .anim-float-slow,
+    .anim-pulse,
+    .anim-glow,
+    .anim-orbit,
+    .anim-spin-slow {
+        animation: none;
+    }
+
+    .anim-fade-in-up,
+    .anim-fade-in-up-delay-1,
+    .anim-fade-in-up-delay-2,
+    .anim-fade-in-up-delay-3,
+    .anim-fade-in-right {
+        animation: none;
+        opacity: 1;
+    }
+}
