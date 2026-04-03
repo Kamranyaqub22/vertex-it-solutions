@@ -1,0 +1,15 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "routes": [
+    { "src": "^/$", "dest": "/index.html" },
+    { "src": "^/managed-it$", "dest": "/managed-it.html" },
+    { "src": "^/cybersecurity$", "dest": "/cybersecurity.html" },
+    { "src": "^/compliance$", "dest": "/compliance.html" },
+    { "src": "^/cloud-communications$", "dest": "/cloud-communications.html" },
+    { "src": "^/infrastructure$", "dest": "/infrastructure.html" },
+    { "src": "^/services$", "dest": "/services.html" },
+    { "src": "^/about$", "dest": "/about.html" },
+    { "src": "^/contact$", "dest": "/contact.html" }
+  ]
+}
