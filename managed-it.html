@@ -403,14 +403,17 @@
       var open = nav.classList.toggle('nav--open');
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
       burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-      document.body.style.overflow = open ? 'hidden' : '';
+      // Hide pill strip when menu is open so it doesn't overlap
+      var pill = document.querySelector('.pill-strip');
+      if (pill) pill.style.visibility = open ? 'hidden' : '';
     });
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && nav.classList.contains('nav--open')) {
         nav.classList.remove('nav--open');
         burger.setAttribute('aria-expanded', 'false');
         burger.setAttribute('aria-label', 'Open menu');
-        document.body.style.overflow = '';
+        var pill = document.querySelector('.pill-strip');
+        if (pill) pill.style.visibility = '';
         burger.focus();
       }
     });
@@ -419,7 +422,8 @@
         nav.classList.remove('nav--open');
         burger.setAttribute('aria-expanded', 'false');
         burger.setAttribute('aria-label', 'Open menu');
-        document.body.style.overflow = '';
+        var pill2 = document.querySelector('.pill-strip');
+        if (pill2) pill2.style.visibility = '';
       }
     });
     
