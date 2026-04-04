@@ -136,14 +136,14 @@
 
     /* ── HERO ─────────────────────────────── */
     .hero {
-      padding-top: 70px;
+      padding-top: 114px;
       display: grid; grid-template-columns: 1fr 1fr;
-      min-height: 92vh;
+      min-height: 72vh;
     }
     @media (max-width: 900px) { .hero { grid-template-columns: 1fr; min-height: auto; } }
 
     .hero__text {
-      padding: 80px 52px 72px;
+      padding: 52px 52px 48px;
       display: flex; flex-direction: column; justify-content: center;
       border-right: 1px solid var(--rule);
     }
@@ -192,15 +192,19 @@
     .hero__stat-label { font-size: .7rem; font-weight: 400; color: rgba(255,255,255,.45); letter-spacing: .04em; }
 
     /* ── PILL STRIP ───────────────────────── */
-    .pill-strip { background: var(--white); border-bottom: 1px solid var(--rule); padding: 20px 0; }
-    .pill-strip__inner { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
-    .pill-strip a {
-      font-size: .8rem; font-weight: 500; color: var(--ink-3);
-      letter-spacing: .02em; padding: 7px 18px;
-      border: 1px solid var(--rule); border-radius: 100px;
-      transition: background .18s, border-color .18s, color .18s;
+    .pill-strip {
+      position: sticky; top: 70px; z-index: 100;
+      background: var(--white); border-bottom: 1px solid var(--rule);
+      padding: 14px 0;
     }
-    .pill-strip a:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .pill-strip__inner { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; padding: 0 24px; }
+    .pill-strip a {
+      font-size: .75rem; font-weight: 500; color: var(--ink-3);
+      letter-spacing: .02em; padding: 6px 16px;
+      border: 1px solid var(--rule); border-radius: 100px;
+      transition: background .18s, border-color .18s, color .18s; white-space: nowrap;
+    }
+    .pill-strip a:hover, .pill-strip a.active { background: var(--ink); color: #fff; border-color: var(--ink); }
     .pill-sep { color: var(--rule); font-size: 1.1rem; user-select: none; }
 
     /* ── MARQUEE ──────────────────────────── */
@@ -478,6 +482,17 @@
   </div>
 </nav>
 
+<!-- ══ PILL STRIP (under nav) ════════════════════════ -->
+<div class="pill-strip">
+  <div class="pill-strip__inner">
+    <a href="managed-it.html">Managed IT</a>
+    <a href="cybersecurity.html">Cyber Security</a>
+    <a href="compliance.html">ISO Compliance</a>
+    <a href="cloud-communications.html">Cloud &amp; Comms</a>
+    <a href="infrastructure.html">Infrastructure</a>
+    <a href="services.html">All Services →</a>
+  </div>
+</div>
 
 <!-- ══ HERO ══════════════════════════════════════════ -->
 <header class="hero" id="home">
@@ -527,26 +542,6 @@
     </div>
   </div>
 </header>
-
-
-<!-- ══ PILL STRIP ══════════════════════════════════════ -->
-<div class="pill-strip">
-  <div class="pill-strip__inner">
-    <a href="managed-it.html">Managed IT</a>
-    <span class="pill-sep">·</span>
-    <a href="cybersecurity.html">Cyber Security</a>
-    <span class="pill-sep">·</span>
-    <a href="compliance.html">ISO Compliance</a>
-    <span class="pill-sep">·</span>
-    <a href="cloud-communications.html">Connectivity</a>
-    <span class="pill-sep">·</span>
-    <a href="infrastructure.html">Infrastructure</a>
-    <span class="pill-sep">·</span>
-    <a href="infrastructure.html">Physical Security</a>
-    <span class="pill-sep">·</span>
-    <a href="services.html">Fleet Management</a>
-  </div>
-</div>
 
 
 <!-- ══ MARQUEE ══════════════════════════════════════════ -->
