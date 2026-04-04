@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enterprise IT Solutions — Managed IT, Cyber Security &amp; Infrastructure</title>
-  <meta name="description" content="Complete IT environments for UK businesses. Managed IT, cyber security, ISO compliance, communications, physical security and specialist systems.">
+  <title>Comprehensive IT Solutions (CITS) — Managed IT, Cyber Security &amp; Infrastructure | CITS-Global</title>
+  <meta name="description" content="Comprehensive IT Solutions (CITS) — Complete IT environments for UK businesses. Managed IT, cyber security, ISO compliance, cloud communications, physical security and specialist systems. Visit CITS-global.co.uk.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -18,17 +18,17 @@
     ══════════════════════════════════════════ */
 
     :root {
-      --paper:    #f6f3ee;
-      --paper-2:  #edeae3;
-      --ink:      #0f0f0e;
-      --ink-2:    #2d2b28;
-      --ink-3:    #6a6660;
-      --ink-4:    #a39e97;
-      --rule:     #d9d5ce;
-      --rule-lt:  #ece9e3;
-      --accent:   #8c6d3f;
-      --accent-h: #7a5e34;
-      --dark:     #141210;
+      --paper:    #fafaf8;
+      --paper-2:  #f3f2ef;
+      --ink:      #0d0d0d;
+      --ink-2:    #2b2b2b;
+      --ink-3:    #6b6b6b;
+      --ink-4:    #a0a0a0;
+      --rule:     #e0e0e0;
+      --rule-lt:  #f0f0f0;
+      --accent:   #1a4fff;
+      --accent-h: #1640e8;
+      --dark:     #0d0d0d;
       --white:    #ffffff;
       --serif:    'Playfair Display', Georgia, serif;
       --sans:     'Manrope', 'Helvetica Neue', sans-serif;
@@ -73,7 +73,7 @@
     /* ── NAV ─────────────────────────────── */
     .nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      background: rgba(246,243,238,.93);
+      background: rgba(250,250,248,.93);
       backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--rule);
     }
@@ -110,6 +110,28 @@
       transition: background .18s, border-color .18s;
     }
     .nav-cta:hover { background: var(--accent) !important; border-color: var(--accent) !important; }
+
+    /* ── Nav Dropdown ─────────────────────── */
+    .nav__dropdown { position: relative; }
+    .nav__dropdown > a { display: flex; align-items: center; gap: 5px; }
+    .nav__dropdown > a::after { content: '▾'; font-size: .6rem; opacity: .55; transition: opacity .18s; }
+    .nav__dropdown:hover > a::after { opacity: 1; }
+    .nav__dropdown-menu {
+      position: absolute; top: calc(100% + 12px); left: -16px;
+      min-width: 230px; background: var(--white);
+      border: 1px solid var(--rule); padding: 8px 0;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transform: translateY(-6px);
+      transition: opacity .2s, transform .2s, visibility .2s;
+      z-index: 400;
+      box-shadow: 0 8px 32px rgba(0,0,0,.09);
+    }
+    .nav__dropdown:hover .nav__dropdown-menu { opacity: 1; visibility: visible; pointer-events: all; transform: translateY(0); }
+    .nav__dropdown-menu a { display: block; padding: 10px 20px; font-size: .72rem; font-weight: 500; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-3); transition: background .15s, color .15s; }
+    .nav__dropdown-menu a:hover { background: var(--paper); color: var(--ink); }
+    .dropdown-divider { height: 1px; background: var(--rule); margin: 6px 0; }
+    .dropdown-all { color: var(--accent) !important; font-weight: 700 !important; }
+    .dropdown-all:hover { color: var(--accent-h) !important; }
 
     /* ── HERO ─────────────────────────────── */
     .hero {
@@ -294,8 +316,8 @@
     .iso-code { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; color: #fff; letter-spacing: -.02em; margin-bottom: 6px; }
     .iso-label { font-size: .72rem; font-weight: 400; color: rgba(255,255,255,.3); letter-spacing: .03em; line-height: 1.5; }
     .iso-wide {
-      grid-column: span 2; background: rgba(140,109,63,.16);
-      border-top: 1px solid rgba(140,109,63,.35); padding: 20px 26px;
+      grid-column: span 2; background: rgba(26,79,255,.10);
+      border-top: 1px solid rgba(26,79,255,.28); padding: 20px 26px;
       display: flex; align-items: center; justify-content: space-between;
     }
     .iso-wide .iso-code { font-size: 1rem; margin-bottom: 3px; }
@@ -420,10 +442,33 @@
 <nav class="nav" id="top">
   <div class="wrap">
     <div class="nav__inner">
-      <a href="index.html" class="nav__logo">Vertex IT<span>Solutions</span></a>
+      <a href="index.html" class="nav__logo">CITS<span>Comprehensive IT Solutions</span></a>
       <ul class="nav__links">
-        <li><a href="services.html">Services</a></li>
-        <li><a href="industries.html">Industries</a></li>
+        <li class="nav__dropdown">
+          <a href="services.html">Services</a>
+          <div class="nav__dropdown-menu">
+            <a href="managed-it.html">Managed IT</a>
+            <a href="cybersecurity.html">Cybersecurity</a>
+            <a href="compliance.html">Compliance</a>
+            <a href="cloud-communications.html">Cloud &amp; Communications</a>
+            <a href="infrastructure.html">Infrastructure</a>
+            <div class="dropdown-divider"></div>
+            <a href="services.html" class="dropdown-all">All Services →</a>
+          </div>
+        </li>
+        <li class="nav__dropdown">
+          <a href="industries.html">Industries</a>
+          <div class="nav__dropdown-menu">
+            <a href="industries.html">Financial Services</a>
+            <a href="industries.html">Healthcare</a>
+            <a href="industries.html">Legal &amp; Professional</a>
+            <a href="industries.html">Education</a>
+            <a href="industries.html">Retail &amp; Hospitality</a>
+            <a href="industries.html">Logistics &amp; Transport</a>
+            <div class="dropdown-divider"></div>
+            <a href="industries.html" class="dropdown-all">All Industries →</a>
+          </div>
+        </li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
@@ -449,7 +494,7 @@
     </h1>
     <p class="hero__sub">We design, implement, and support complete IT environments for UK businesses — covering managed IT, cyber security, compliance, communications, and specialist systems.</p>
     <div class="hero__actions">
-      <a href="#contact" class="btn btn-filled">Request Consultation</a>
+      <a href="contact.html" class="btn btn-filled">Request Consultation</a>
       <a href="#capabilities" class="btn btn-outline">View Services
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
           <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -486,19 +531,19 @@
 <!-- ══ PILL STRIP ══════════════════════════════════════ -->
 <div class="pill-strip">
   <div class="pill-strip__inner">
-    <a href="#capabilities">Managed IT</a>
+    <a href="managed-it.html">Managed IT</a>
     <span class="pill-sep">·</span>
-    <a href="#capabilities">Cyber Security</a>
+    <a href="cybersecurity.html">Cyber Security</a>
     <span class="pill-sep">·</span>
-    <a href="#compliance">ISO Compliance</a>
+    <a href="compliance.html">ISO Compliance</a>
     <span class="pill-sep">·</span>
-    <a href="#capabilities">Connectivity</a>
+    <a href="cloud-communications.html">Connectivity</a>
     <span class="pill-sep">·</span>
-    <a href="#capabilities">Infrastructure</a>
+    <a href="infrastructure.html">Infrastructure</a>
     <span class="pill-sep">·</span>
-    <a href="#capabilities">Physical Security</a>
+    <a href="infrastructure.html">Physical Security</a>
     <span class="pill-sep">·</span>
-    <a href="#capabilities">Fleet Management</a>
+    <a href="services.html">Fleet Management</a>
   </div>
 </div>
 
@@ -554,26 +599,26 @@
   </div>
   <div class="wrap">
     <div class="caps__grid">
-      <div class="cap-cell reveal">
+      <a href="managed-it.html" class="cap-cell reveal" style="text-decoration:none;display:block;">
         <div class="cap-cell__num">i.</div>
         <h3>Managed IT &amp; Support</h3>
         <p>Comprehensive managed IT services for ongoing support, maintenance, and infrastructure management. Proactive monitoring and helpdesk included.</p>
-      </div>
-      <div class="cap-cell reveal reveal-delay-1">
+      </a>
+      <a href="cybersecurity.html" class="cap-cell reveal reveal-delay-1" style="text-decoration:none;display:block;">
         <div class="cap-cell__num">ii.</div>
         <h3>Cyber Security &amp; Compliance</h3>
         <p>Advanced cyber security solutions, compliance management, and ISO certification support. Pen testing, audits, and disaster recovery planning.</p>
-      </div>
-      <div class="cap-cell reveal reveal-delay-2">
+      </a>
+      <a href="cloud-communications.html" class="cap-cell reveal reveal-delay-2" style="text-decoration:none;display:block;">
         <div class="cap-cell__num">iii.</div>
         <h3>Communications &amp; Connectivity</h3>
         <p>Business telephony, call centre solutions, wireless networking, and rural broadband where fixed-line infrastructure is unavailable.</p>
-      </div>
-      <div class="cap-cell reveal reveal-delay-3">
+      </a>
+      <a href="infrastructure.html" class="cap-cell reveal reveal-delay-3" style="text-decoration:none;display:block;">
         <div class="cap-cell__num">iv.</div>
         <h3>Infrastructure &amp; Physical Security</h3>
         <p>CCTV systems, access control, boardroom A/V, and electrical engineering works — all installed and maintained by our team.</p>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -584,141 +629,63 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="sec-kicker">Complete Service List</div>
-        <div class="sec-title">Everything your<br>business needs.</div>
+        <div class="sec-kicker">Core Services</div>
+        <div class="sec-title">Our specialist<br>service areas.</div>
       </div>
       <div class="sec-body-p">
-        <p>One team with full accountability. No subcontractors, no finger-pointing. From the first cable to the last compliance certificate.</p>
+        <p>Five dedicated service divisions, each led by certified specialists. Click any service for full details, credentials, and case examples.</p>
       </div>
     </div>
     <div class="svc-list reveal">
 
-      <div class="svc-row">
+      <a href="managed-it.html" class="svc-row" style="text-decoration:none;cursor:pointer;">
         <div class="svc-num">01</div>
         <div>
           <div class="svc-name">Managed IT Services</div>
           <div class="svc-desc">Proactive monitoring, helpdesk, patch management, and infrastructure oversight. We keep systems healthy before problems arise.</div>
         </div>
         <div class="svc-arrow">→</div>
-      </div>
+      </a>
 
-      <div class="svc-row">
+      <a href="cybersecurity.html" class="svc-row" style="text-decoration:none;cursor:pointer;">
         <div class="svc-num">02</div>
         <div>
           <div class="svc-name">Cybersecurity</div>
           <div class="svc-desc">End-to-end security including pen testing, vulnerability assessments, threat monitoring, and incident response.</div>
         </div>
         <div class="svc-arrow">→</div>
-      </div>
+      </a>
 
-      <div class="svc-row">
+      <a href="compliance.html" class="svc-row" style="text-decoration:none;cursor:pointer;">
         <div class="svc-num">03</div>
         <div>
-          <div class="svc-name">Cloud Services &amp; Licensing</div>
-          <div class="svc-desc">Microsoft 365, Azure, CRM platforms, and cloud solution licences tailored to your workflows and team size.</div>
+          <div class="svc-name">Compliance &amp; ISO Certification</div>
+          <div class="svc-desc">ISO 27001, ISO 9001, Cyber Essentials, and GDPR — end-to-end compliance management and audit preparation.</div>
         </div>
         <div class="svc-arrow">→</div>
-      </div>
+      </a>
 
-      <div class="svc-row">
+      <a href="cloud-communications.html" class="svc-row" style="text-decoration:none;cursor:pointer;">
         <div class="svc-num">04</div>
         <div>
-          <div class="svc-name">Telephony &amp; Call Centre Solutions</div>
-          <div class="svc-desc">Microsoft and telephony licences, call centre infrastructure, landlines, and mobile fleet management solutions.</div>
+          <div class="svc-name">Cloud &amp; Communications</div>
+          <div class="svc-desc">Microsoft 365, Azure, VoIP telephony, call centre solutions, and wireless broadband deployment.</div>
         </div>
         <div class="svc-arrow">→</div>
-      </div>
+      </a>
 
-      <div class="svc-row">
+      <a href="infrastructure.html" class="svc-row" style="text-decoration:none;cursor:pointer;">
         <div class="svc-num">05</div>
         <div>
-          <div class="svc-name">Fire &amp; Security — CCTV</div>
-          <div class="svc-desc">IP camera systems, fire detection, access control, and full physical security infrastructure design and installation.</div>
+          <div class="svc-name">Infrastructure &amp; Physical Security</div>
+          <div class="svc-desc">Structured cabling, CCTV systems, access control, boardroom AV, and full electrical engineering works.</div>
         </div>
         <div class="svc-arrow">→</div>
-      </div>
+      </a>
 
-      <div class="svc-row">
-        <div class="svc-num">06</div>
-        <div>
-          <div class="svc-name">Boardroom &amp; Meeting Room Solutions</div>
-          <div class="svc-desc">Integrated AV, video conferencing, smart displays, and control systems for productive meeting spaces.</div>
-        </div>
-        <div class="svc-arrow">→</div>
-      </div>
-
-      <div class="svc-row">
-        <div class="svc-num">07</div>
-        <div>
-          <div class="svc-name">Networking &amp; Wireless Connectivity</div>
-          <div class="svc-desc">LAN/WAN, Wi-Fi, and wireless broadband for locations where landline infrastructure is unavailable.</div>
-        </div>
-        <div class="svc-arrow">→</div>
-      </div>
-
-      <div class="svc-row">
-        <div class="svc-num">08</div>
-        <div>
-          <div class="svc-name">Hardware Supply &amp; Deployment</div>
-          <div class="svc-desc">PCs, laptops, mobiles, and networking hardware — sourced, configured to spec, and deployed with zero disruption.</div>
-        </div>
-        <div class="svc-arrow">→</div>
-      </div>
-
-      <div class="svc-row">
-        <div class="svc-num">09</div>
-        <div>
-          <div class="svc-name">Electrical &amp; Engineering Works</div>
-          <div class="svc-desc">Structured cabling, data room build-outs, power distribution, and full electrical project delivery on any scale.</div>
-        </div>
-        <div class="svc-arrow">→</div>
-      </div>
-
-      <div class="svc-row">
-        <div class="svc-num">10</div>
-        <div>
-          <div class="svc-name">Disaster Recovery &amp; Audits</div>
-          <div class="svc-desc">DR planning, backup solutions, recovery testing, and thorough IT audits to ensure full business continuity.</div>
-        </div>
-        <div class="svc-arrow">→</div>
-      </div>
-
-      <div class="svc-row">
-        <div class="svc-num">11</div>
-        <div>
-          <div class="svc-name">Software Support</div>
-          <div class="svc-desc">Application management, updates, bug resolution, and bespoke software solutions for business-critical systems.</div>
-        </div>
-        <div class="svc-arrow">→</div>
-      </div>
-
-      <div class="svc-row">
-        <div class="svc-num">12</div>
-        <div>
-          <div class="svc-name">Fleet Management Solutions</div>
-          <div class="svc-desc">GPS tracking, telematics, driver behaviour monitoring, and full fleet visibility to reduce operational cost and risk.</div>
-        </div>
-        <div class="svc-arrow">→</div>
-      </div>
-
-      <div class="svc-row">
-        <div class="svc-num">13</div>
-        <div>
-          <div class="svc-name">Mobile, TV &amp; Electronics Repair</div>
-          <div class="svc-desc">Maintenance contracts and repair services for mobiles, screens and electronics — keeping your assets operational.</div>
-        </div>
-        <div class="svc-arrow">→</div>
-      </div>
-
-      <div class="svc-row">
-        <div class="svc-num">14</div>
-        <div>
-          <div class="svc-name">Custom IT Solutions</div>
-          <div class="svc-desc">If it's not listed, we'll engineer it. Bespoke solutions designed from the ground up around your exact requirements.</div>
-        </div>
-        <div class="svc-arrow">→</div>
-      </div>
-
+    </div>
+    <div class="reveal" style="text-align:center;padding:48px 0 24px;">
+      <a href="services.html" class="btn btn-outline">View All 14+ Services →</a>
     </div>
   </div>
 </section>
@@ -744,7 +711,7 @@
         <li>A single point of contact for every technology need</li>
         <li>Proven across professional services, retail, logistics and healthcare</li>
       </ul>
-      <a href="#contact" class="btn btn-filled" style="align-self:flex-start">Request a Consultation</a>
+      <a href="contact.html" class="btn btn-filled" style="align-self:flex-start">Request a Consultation</a>
     </div>
   </div>
 </section>
@@ -872,7 +839,7 @@
     <div class="contact__left reveal">
       <h2>Ready to simplify<br>your <i>technology?</i></h2>
       <p>Book a free, no-obligation consultation with one of our engineers. We'll assess your current setup and present a clear proposal within 2 working days.</p>
-      <a href="#contact" class="btn btn-filled" style="align-self:flex-start;margin-bottom:40px">Book Free Consultation</a>
+      <a href="contact.html" class="btn btn-filled" style="align-self:flex-start;margin-bottom:40px">Book Free Consultation</a>
       <div class="contact__hotline">
         <div class="contact__hotline-label">Emergency Support Line</div>
         <div class="contact__hotline-num">0800 000 0000</div>
@@ -881,45 +848,50 @@
     </div>
 
     <div class="contact__form reveal reveal-delay-1">
-      <div class="form-row">
-        <div class="form-group">
-          <label for="f-first">First Name</label>
-          <input type="text" id="f-first" name="first_name" placeholder="John" autocomplete="given-name">
+      <form action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <!-- Replace YOUR_ACCESS_KEY below with your key from web3forms.com (free signup) -->
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+        <input type="hidden" name="subject" value="New Enquiry — CITS Website">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-first">First Name</label>
+            <input type="text" id="f-first" name="first_name" placeholder="John" autocomplete="given-name">
+          </div>
+          <div class="form-group">
+            <label for="f-last">Last Name</label>
+            <input type="text" id="f-last" name="last_name" placeholder="Smith" autocomplete="family-name">
+          </div>
         </div>
         <div class="form-group">
-          <label for="f-last">Last Name</label>
-          <input type="text" id="f-last" name="last_name" placeholder="Smith" autocomplete="family-name">
+          <label for="f-company">Company Name</label>
+          <input type="text" id="f-company" name="company" placeholder="Acme Ltd" autocomplete="organization">
         </div>
-      </div>
-      <div class="form-group">
-        <label for="f-company">Company Name</label>
-        <input type="text" id="f-company" name="company" placeholder="Acme Ltd" autocomplete="organization">
-      </div>
-      <div class="form-group">
-        <label for="f-email">Business Email</label>
-        <input type="email" id="f-email" name="email" placeholder="john@company.co.uk" autocomplete="email">
-      </div>
-      <div class="form-group">
-        <label for="f-service">Service of Interest</label>
-        <select id="f-service" name="service">
-          <option value="" disabled selected>Select a service area…</option>
-          <option>Managed IT Services</option>
-          <option>Cybersecurity &amp; Compliance</option>
-          <option>Cloud Services &amp; Licensing</option>
-          <option>Fire, CCTV &amp; Physical Security</option>
-          <option>Boardroom &amp; Meeting Room</option>
-          <option>Networking &amp; Connectivity</option>
-          <option>Hardware Supply</option>
-          <option>Electrical &amp; Engineering</option>
-          <option>Fleet Management</option>
-          <option>Multiple Services</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="f-message">Brief Description</label>
-        <textarea id="f-message" name="message" placeholder="Tell us about your current setup or the problem you're looking to solve…"></textarea>
-      </div>
-      <button type="submit" class="btn-submit">Submit Enquiry →</button>
+        <div class="form-group">
+          <label for="f-email">Business Email</label>
+          <input type="email" id="f-email" name="email" placeholder="john@company.co.uk" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="f-service">Service of Interest</label>
+          <select id="f-service" name="service">
+            <option value="" disabled selected>Select a service area…</option>
+            <option>Managed IT Services</option>
+            <option>Cybersecurity &amp; Compliance</option>
+            <option>Cloud Services &amp; Licensing</option>
+            <option>Fire, CCTV &amp; Physical Security</option>
+            <option>Boardroom &amp; Meeting Room</option>
+            <option>Networking &amp; Connectivity</option>
+            <option>Hardware Supply</option>
+            <option>Electrical &amp; Engineering</option>
+            <option>Fleet Management</option>
+            <option>Multiple Services</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="f-message">Brief Description</label>
+          <textarea id="f-message" name="message" placeholder="Tell us about your current setup or the problem you're looking to solve…"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Submit Enquiry →</button>
+      </form>
     </div>
 
   </div>
@@ -931,11 +903,11 @@
   <div class="wrap">
     <div class="footer__top">
       <div>
-        <div class="footer__brand">Vertex IT Solutions</div>
+        <div class="footer__brand">Comprehensive IT Solutions (CITS)</div>
         <p class="footer__tagline">Complete IT environments for UK businesses. From managed services and cyber security to physical infrastructure and ISO compliance.</p>
         <div class="footer__contact">
           <a href="tel:08000000000">0800 000 0000</a>
-          <a href="mailto:info@vertexit.co.uk">info@vertexit.co.uk</a>
+          <a href="mailto:info@cits-global.co.uk">info@cits-global.co.uk</a>
         </div>
       </div>
       <div>
@@ -972,7 +944,7 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <span class="footer__copy">© 2026 Vertex IT Solutions Ltd. All rights reserved. Registered in England &amp; Wales.</span>
+      <span class="footer__copy">© 2026 Comprehensive IT Solutions (CITS) Ltd. All rights reserved. Registered in England &amp; Wales.</span>
       <div class="footer__legal">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Service</a>
