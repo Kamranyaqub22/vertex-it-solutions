@@ -364,9 +364,9 @@ footer { border-top: 1px solid var(--rule); background: var(--paper); }
 .nav--open .nav__burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 @media (max-width: 900px) {
-  .nav__burger { display: flex; }
+  .nav__burger { display: flex !important; }
   .nav__links {
-    display: none;
+    display: none !important;
     position: fixed;
     top: 70px; left: 0; right: 0; bottom: 0;
     background: var(--paper);
@@ -374,17 +374,20 @@ footer { border-top: 1px solid var(--rule); background: var(--paper); }
     padding: 16px 24px 40px;
     overflow-y: auto;
     gap: 0 !important;
-    z-index: 199;
+    z-index: 1000;
     border-top: 1px solid var(--rule);
   }
-  .nav--open .nav__links { display: flex; }
+  .nav--open .nav__links { display: flex !important; }
   .nav__links li { display: block !important; border-bottom: 1px solid var(--rule-lt); }
   .nav__links > li > a { display: block !important; padding: 14px 0; font-size: .95rem; font-weight: 500; color: var(--ink); letter-spacing: 0; text-transform: none; }
 
-  /* Dropdown arrow — show as tap indicator */
+  /* Dropdown arrow — tap indicator */
   .nav__dropdown > a { justify-content: space-between; }
   .nav__dropdown > a::after { display: inline !important; font-size: .8rem; opacity: .5; transition: transform .2s; }
   .nav__dropdown.open > a::after { transform: rotate(180deg); opacity: 1; }
+
+  /* Kill desktop hover behaviour on touch */
+  .nav__dropdown:hover .nav__dropdown-menu { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
 
   /* Sub-menu: hidden until tapped */
   .nav__dropdown-menu {
@@ -396,15 +399,16 @@ footer { border-top: 1px solid var(--rule); background: var(--paper); }
     box-shadow: none !important;
     background: var(--paper-2) !important;
     border: none !important;
-    border-radius: 6px !important;
-    padding: 6px 0 6px 16px !important;
-    margin-bottom: 8px !important;
+    border-top: 1px solid var(--rule-lt) !important;
+    border-radius: 0 !important;
+    padding: 4px 0 4px 16px !important;
+    margin-bottom: 0 !important;
     min-width: 0 !important;
     transform: none !important;
     transition: none !important;
   }
   .nav__dropdown.open .nav__dropdown-menu { display: block !important; }
-  .nav__dropdown-menu a { padding: 11px 8px !important; font-size: .9rem !important; color: var(--ink-2) !important; text-transform: none !important; letter-spacing: 0 !important; }
+  .nav__dropdown-menu a { padding: 12px 8px !important; font-size: .9rem !important; color: var(--ink-2) !important; text-transform: none !important; letter-spacing: 0 !important; border: none !important; }
   .nav__dropdown-menu .dropdown-divider { display: none; }
   .nav__links .nav-cta { display: inline-flex !important; margin: 16px 0 0 !important; }
 }
