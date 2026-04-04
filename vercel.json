@@ -2,6 +2,8 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "routes": [
+    { "src": "^/design-system(\\.html)?$", "status": 404 },
+    { "src": "^/it-services-landing.*$", "status": 404 },
     { "src": "^/$", "dest": "/index.html" },
     { "src": "^/managed-it$", "dest": "/managed-it.html" },
     { "src": "^/cybersecurity$", "dest": "/cybersecurity.html" },
@@ -10,6 +12,9 @@
     { "src": "^/infrastructure$", "dest": "/infrastructure.html" },
     { "src": "^/services$", "dest": "/services.html" },
     { "src": "^/about$", "dest": "/about.html" },
-    { "src": "^/contact$", "dest": "/contact.html" }
+    { "src": "^/contact$", "dest": "/contact.html" },
+    { "src": "^/industries$", "dest": "/industries.html" },
+    { "src": "^/privacy$", "dest": "/privacy.html" },
+    { "src": "^/terms$", "dest": "/terms.html" }
   ]
 }

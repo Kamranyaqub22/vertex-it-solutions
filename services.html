@@ -10,7 +10,10 @@
   <meta property="og:title" content="IT Services — Managed IT, Cyber Security &amp; Infrastructure | Comprehensive IT Solutions (CITS)">
   <meta property="og:description" content="Explore Comprehensive IT Solutions (CITS)' full range of IT services: managed IT, cyber security, ISO compliance, cloud communications, physical security, hardware, and specialist systems for UK businesses.">
   <meta property="og:site_name" content="CITS — Comprehensive IT Solutions">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:url" content="https://vertex-it-solutions.vercel.app/services">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -329,7 +332,6 @@
           <li><a href="about.html">About Us</a></li>
           <li><a href="industries.html">Industries</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <li><a href="contact.html">Client Portal</a></li>
         </ul>
       </div>
       <div>
@@ -343,17 +345,18 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <span class="footer__copy">© 2026 Comprehensive IT Solutions (CITS) Ltd. All rights reserved. Registered in England &amp; Wales.</span>
+      <span class="footer__copy">© 2026 Comprehensive IT Solutions (CITS) Ltd. All rights reserved. Registered in England &amp; Wales. Company No. 14237856.</span>
       <div class="footer__legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Cookie Policy</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+        <a href="/privacy#cookies">Cookie Policy</a>
       </div>
     </div>
   </div>
 </footer>
 
 <script>
+  if(localStorage.getItem('cits_cookies')) document.getElementById('cookie-banner').style.display='none';
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.07, rootMargin: '0px 0px -48px 0px' });
@@ -413,5 +416,9 @@
     });
   })();
 </script>
+<div class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookie notice">
+  <p style="margin:0;flex:1;min-width:220px;">This site uses Google Fonts to deliver its design. By continuing to browse you accept our <a href="/privacy">Privacy&nbsp;Policy</a>.</p>
+  <button class="cookie-banner__btn" onclick="(function(){document.getElementById('cookie-banner').style.display='none';try{localStorage.setItem('cits_cookies','1')}catch(e){}})()">Got it</button>
+</div>
 </body>
 </html>

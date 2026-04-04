@@ -10,7 +10,10 @@
   <meta property="og:title" content="Comprehensive IT Solutions (CITS) — Managed IT, Cyber Security &amp; Infrastructure | CITS-Global">
   <meta property="og:description" content="Comprehensive IT Solutions (CITS) — Complete IT environments for UK businesses. Managed IT, cyber security, ISO compliance, cloud communications, physical security and specialist systems. Visit CITS-global.co.uk.">
   <meta property="og:site_name" content="CITS — Comprehensive IT Solutions">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:url" content="https://vertex-it-solutions.vercel.app/">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="css/vertex.css">
@@ -425,8 +428,9 @@
 
     <div class="contact__form reveal reveal-delay-1">
       <form action="https://api.web3forms.com/submit" method="POST">
-        <!-- Replace YOUR_ACCESS_KEY below with your key from web3forms.com (free signup) -->
-        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+        <!-- Replace 90d59471-20fb-48cb-aec4-915f689e1487 below with your key from web3forms.com (free signup) -->
+                <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="access_key" value="90d59471-20fb-48cb-aec4-915f689e1487">
         <input type="hidden" name="subject" value="New Enquiry — CITS Website">
         <div class="form-row">
           <div class="form-group">
@@ -516,16 +520,15 @@
           <li><a href="industries.html">Industries</a></li>
           <li><a href="about.html">Our Team</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <li><a href="contact.html">Client Portal</a></li>
         </ul>
       </div>
     </div>
     <div class="footer__bottom">
-      <span class="footer__copy">© 2026 Comprehensive IT Solutions (CITS) Ltd. All rights reserved. Registered in England &amp; Wales.</span>
+      <span class="footer__copy">© 2026 Comprehensive IT Solutions (CITS) Ltd. All rights reserved. Registered in England &amp; Wales. Company No. 14237856.</span>
       <div class="footer__legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Cookie Policy</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+        <a href="/privacy#cookies">Cookie Policy</a>
       </div>
     </div>
   </div>
@@ -533,6 +536,7 @@
 
 
 <script>
+  if(localStorage.getItem('cits_cookies')) document.getElementById('cookie-banner').style.display='none';
   // Scroll reveal
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -599,5 +603,9 @@
     });
   })();
 </script>
+<div class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookie notice">
+  <p style="margin:0;flex:1;min-width:220px;">This site uses Google Fonts to deliver its design. By continuing to browse you accept our <a href="/privacy">Privacy&nbsp;Policy</a>.</p>
+  <button class="cookie-banner__btn" onclick="(function(){document.getElementById('cookie-banner').style.display='none';try{localStorage.setItem('cits_cookies','1')}catch(e){}})()">Got it</button>
+</div>
 </body>
 </html>

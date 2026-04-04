@@ -541,3 +541,20 @@ footer { border-top: 1px solid var(--rule); background: var(--paper); }
     align-self: flex-start;
   }
 }
+
+/* ── Cookie consent banner ──────────────────────────── */
+.cookie-banner {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 9000;
+  background: var(--ink); color: rgba(255,255,255,.85);
+  padding: 14px 32px; display: flex; align-items: center;
+  gap: 20px; flex-wrap: wrap; font-size: .78rem; font-weight: 300; line-height: 1.6;
+  border-top: 2px solid var(--accent);
+}
+.cookie-banner a { color: #7da8ff; text-decoration: underline; }
+.cookie-banner__btn {
+  background: var(--accent); color: #fff; border: none;
+  padding: 8px 22px; border-radius: 4px; font-size: .78rem;
+  font-weight: 600; cursor: pointer; white-space: nowrap; flex-shrink: 0;
+  transition: background .18s;
+}
+.cookie-banner__btn:hover { background: var(--accent-h, #1040ee); }

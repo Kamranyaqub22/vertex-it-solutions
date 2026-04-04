@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /design-system
+Disallow: /design-system.html
+Disallow: /it-services-landing
+
+Sitemap: https://vertex-it-solutions.vercel.app/sitemap.xml
