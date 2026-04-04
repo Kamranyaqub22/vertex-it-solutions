@@ -61,7 +61,7 @@ img { display: block; max-width: 100%; }
 .nav__logo { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; letter-spacing: -.01em; color: var(--ink); }
 .nav__logo span { font-family: var(--sans); font-size: .5rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); vertical-align: super; margin-left: 3px; }
 .nav__links { display: flex; align-items: center; gap: 36px; list-style: none; }
-@media (max-width: 900px) { .nav__links { gap: 0; } .nav__links li:not(:last-child) { display: none; } }
+@media (max-width: 900px) { .nav__links { gap: 0; } }
 .nav__links a { font-size: .77rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); transition: color .18s; }
 .nav__links a:hover, .nav__links a.active { color: var(--ink); }
 .nav-cta { background: var(--ink); color: #fff !important; padding: 10px 22px; font-size: .74rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; border: 1.5px solid var(--ink); transition: background .18s, border-color .18s; }
@@ -309,3 +309,92 @@ footer { border-top: 1px solid var(--rule); background: var(--paper); }
 .reveal-delay-1 { transition-delay: .08s; }
 .reveal-delay-2 { transition-delay: .16s; }
 .reveal-delay-3 { transition-delay: .24s; }
+
+/* ── Skip link ───────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 24px;
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 20px;
+  font-size: .8rem;
+  font-weight: 600;
+  text-decoration: none;
+  z-index: 9999;
+  border-radius: 0 0 4px 4px;
+  transition: top .15s;
+}
+.skip-link:focus { top: 0; }
+
+/* ── Focus visible ───────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ── Mobile nav burger ───────────────────────────── */
+.nav__burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.nav__burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform .25s, opacity .2s, width .2s;
+  transform-origin: center;
+}
+.nav--open .nav__burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav--open .nav__burger span:nth-child(2) { opacity: 0; width: 0; }
+.nav--open .nav__burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 900px) {
+  .nav__burger { display: flex; }
+  .nav__links {
+    display: none;
+    position: fixed;
+    top: 70px; left: 0; right: 0; bottom: 0;
+    background: var(--paper);
+    flex-direction: column;
+    padding: 24px 24px 40px;
+    overflow-y: auto;
+    gap: 0 !important;
+    z-index: 199;
+    border-top: 1px solid var(--rule);
+  }
+  .nav--open .nav__links { display: flex; }
+  .nav__links li { display: block !important; border-bottom: 1px solid var(--rule-lt); }
+  .nav__links > li > a { display: block !important; padding: 14px 0; font-size: .95rem; font-weight: 500; color: var(--ink); letter-spacing: 0; text-transform: none; }
+  .nav__dropdown > a::after { display: none; }
+  .nav__dropdown-menu {
+    position: static !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 0 12px 16px !important;
+    min-width: 0 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .nav__dropdown-menu a { padding: 9px 0 !important; font-size: .85rem !important; color: var(--ink-3) !important; text-transform: none !important; letter-spacing: 0 !important; }
+  .nav__dropdown-menu .dropdown-divider { display: none; }
+  .nav__links .nav-cta { display: inline-flex !important; margin: 20px 0 0 !important; }
+}
