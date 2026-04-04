@@ -558,3 +558,51 @@ footer { border-top: 1px solid var(--rule); background: var(--paper); }
   transition: background .18s;
 }
 .cookie-banner__btn:hover { background: var(--accent-h, #1040ee); }
+
+/* ═══════════════════════════════════════════════════════════
+   ABOUT PAGE — values grid, timeline, cert badges
+   ═══════════════════════════════════════════════════════════ */
+.values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--rule); margin-top: 56px; }
+@media (max-width: 768px) { .values-grid { grid-template-columns: 1fr; } }
+.value-cell { background: var(--paper); padding: 44px 36px; transition: background .2s; }
+.value-cell:hover { background: var(--paper-2); }
+.value-num { font-family: var(--serif); font-style: italic; font-size: .85rem; color: var(--accent); margin-bottom: 18px; }
+.value-title { font-family: var(--serif); font-size: 1.3rem; font-weight: 500; color: var(--ink); margin-bottom: 12px; }
+.value-body { font-size.value-body { font-size.value-body { font-size.value-body { font-size.value-body { font-size.value-body { font-size.value-body { font-size.value-body { font-size.value-body { fong: .value-body { font-size.vx solid var(--rule); }
+.tl-item:last-child { border-bottom: none; }
+.tl-year { font-family: var(--serif); font-size: 1.4rem; font-weight: 400; color: var(--accent); letter-spacing: -.03em; }
+.tl-title { font-size: .93rem; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+.tl-body { font-size: .85rem; font-weight: 300; color:.tl-body { font-size: .85rem; font-weight: 300; color:.tl-body { font-sizwrap; gap: 14px; margin-top: 32px; }
+.cert-badge { display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; border: 1px solid var(--rule); font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.cert-badge span { font-family: var(--serif); font-size: 1rem; font-weight: 500; color: var(--accent); }
+
+/* ═══════════════════════════════════════════════════════════
+   CONTACT PAGE — contact details, hours grid, map placeholder
+   ═══════════════════════════════════════════════════════════ */
+.contact-details { list-style: none; margin-top: 32px; }
+.contact-details li { display: flex; a.contact-details li { display: flex; a.contact-details li { display: flex; a.contact-details li { display: flex; a.contact-details li { display: flex; a.contact-det.contact-details li { display: flex; a.contact-details li { display: flex; a.contact-details li { display: flex; a.contact-details li { display: flex; a.contact-details li { display: flex; a.contact-det.contact-details li { dis {.contact-details li { display: flex; a.contact-details li { display: flex; a.contact-details li { displ.hours-cell { background: var(--paper); padding: 24px 28px; }
+.hours-label { font-size: .65rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 8px; }
+.hours-value { font-family: var(--serif); font-size: 1rem; font-weight: 500; color: var(--ink); }
+.hours-value em { font-style: normal; color: var(--accent); }
+.map-placeholder { background: var(--paper-2); border: 1px solid v.map-placeholder { background: var(--pax; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+.map-placeholder p { font-size: .82rem; color: var(--ink-4); text-align: center; }
+.map-placeholder strong { font-family: var(--serif); font-size: 1.1rem; color: var(--ink-3); }
+
+/* ═══════════════════════════════════════════════════════════
+   INDUSTRIES PAGE — industry grid and cards
+   ═══════════════════════════════════════�   ═══════════════════════════════════════�   ══════�:    ═══════════════════════════════du   ═══════════════════(--rule); border-right: 1px solid var(--rule); transition: background .2s; }
+.industry-card:nth-child(even) { border-right: none; }
+.industry-card:nth-last-child(-n+2) { border-bottom: none; }
+@media (max-width: 768px) { .industry-card { border-right: none !important; } .indu@media (max-width: 768px) { .industry-card { border-right: none !important; } .indu@media (mar-2); }
+.industry-num { font-family: var(--serif); font-style: italic; font-size: .85rem; color: var(--accent); margin-bottom: 14px; }
+.industry-name { font-family: var(--serif); font-size: 1.5rem; font-weight: 500; color: var(--ink); margin-bottom: 14px; letter-spacing: -.02em; }
+.industry-desc { font-size: .87rem; font-weight: 300; color: var(--ink-3); line-height: 1.75; margin-bottom: 20px; }
+.industry-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.industry-tag { font-size: .67rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-4); padding: 5px 12px; border: 1px solid var(--rule); }
+
+/* ═══════════════════════════════════════════════════════════
+   PRIVACY / TERMS PAGES — po   PRIVACY / TERMS PAGES — po   PRIVACY / TERMS PAGES — po   PRIVACY / TERMS PAGES — po   PRIVACY / TERMS PAGES — po   PRIVACY / TERMS PAGES — po   PRIVACY / TERMS PAGES �═════ */
+.policy-body { max-width: 760px; margin: 0 auto; padding: 64px 0 96px; }
+.policy-body h2 { font-family: var(--serif); font-size: 1.5rem; font-weight: 500; color: var(--ink); margin: 48px 0 14px; }
+.policy-body h3 { font-size: .95rem; font-weight: 700; color: var(--ink); margin: 28px 0 8px; }
+.policy-body p, .policy-body li { font-size: .93rem; font-weight: 300; line-heigh.policy-body p, .policy-body li { font-size: .93rem; font-wy-.policy-body p, .policy-body li { font-size: .93rem; font-weight: 300; line-heigh.policy-body p, .policy-body li { font-size: .93rem; font-wy-.policy-body p, .policy-body lixt-transform: uppercase; color: var(--ink-4); margin-bottom: 32px; display: block; }

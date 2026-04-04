@@ -1,20 +1,32 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options",           "value": "SAMEORIGIN" },
+        { "key": "X-Content-Type-Options",     "value": "nosniff" },
+        { "key": "Referrer-Policy",            "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy",         "value": "camera=(), microphone=(), geolocation=()" },
+        { "key": "X-XSS-Protection",           "value": "1; mode=block" }
+      ]
+    },
+    {
+      "source": "/js/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/css/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ],
   "routes": [
     { "src": "^/design-system(\\.html)?$", "status": 404 },
-    { "src": "^/it-services-landing.*$", "status": 404 },
-    { "src": "^/$", "dest": "/index.html" },
-    { "src": "^/managed-it$", "dest": "/managed-it.html" },
-    { "src": "^/cybersecurity$", "dest": "/cybersecurity.html" },
-    { "src": "^/compliance$", "dest": "/compliance.html" },
-    { "src": "^/cloud-communications$", "dest": "/cloud-communications.html" },
-    { "src": "^/infrastructure$", "dest": "/infrastructure.html" },
-    { "src": "^/services$", "dest": "/services.html" },
-    { "src": "^/about$", "dest": "/about.html" },
-    { "src": "^/contact$", "dest": "/contact.html" },
-    { "src": "^/industries$", "dest": "/industries.html" },
-    { "src": "^/privacy$", "dest": "/privacy.html" },
-    { "src": "^/terms$", "dest": "/terms.html" }
+    { "src": "^/it-services-landing.*$",   "status": 404 }
   ]
 }
