@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System — Comprehensive IT Solutions (CITS)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Tokens ── */
+    :root {
+      --paper:    #fafaf8;
+      --paper-2:  #f3f2ef;
+      --ink:      #0d0d0d;
+      --ink-2:    #2b2b2b;
+      --ink-3:    #6b6b6b;
+      --ink-4:    #a0a0a0;
+      --rule:     #e0e0e0;
+      --rule-lt:  #f0f0f0;
+      --accent:   #1a4fff;
+      --accent-h: #1640e8;
+      --accent-lt:#e8eeff;
+      --dark:     #0d0d0d;
+      --white:    #ffffff;
+      --success:  #10b981;
+      --warning:  #f59e0b;
+      --danger:   #ef4444;
+      --serif:    'Playfair Display', Georgia, serif;
+      --sans:     'Manrope', 'Helvetica Neue', sans-serif;
+      --max:      1300px;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-full: 9999px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,.06);
+      --shadow-md: 0 4px 12px rgba(0,0,0,.08);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,.10);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--accent); color: #fff; }
+
+    /* ── Layout ── */
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 52px; }
+    @media (max-width: 768px) { .wrap { padding: 0 24px; } }
+
+    /* ── Design System Nav ── */
+    .ds-nav {
+      position: sticky; top: 0; z-index: 200;
+      background: var(--dark); color: #fff;
+      padding: 0 52px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+    }
+    .ds-nav__brand { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.5); }
+    .ds-nav__brand span { color: #fff; }
+    .ds-nav__links { display: flex; gap: 24px; }
+    .ds-nav__links a { font-size: .72rem; font-weight: 500; letter-spacing: .04em; color: rgba(255,255,255,.45); text-transform: uppercase; transition: color .18s; }
+    .ds-nav__links a:hover { color: #fff; }
+    @media (max-width: 768px) { .ds-nav__links { display: none; } .ds-nav { padding: 0 24px; } }
+
+    /* ── Section structure ── */
+    .ds-section { padding: 80px 0; border-bottom: 1px solid var(--rule); }
+    .ds-section:last-child { border-bottom: none; }
+    .ds-section-label {
+      font-size: .65rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 8px;
+    }
+    .ds-section-title {
+      font-family: var(--serif); font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+      font-weight: 500; letter-spacing: -.025em; color: var(--ink);
+      margin-bottom: 12px; line-height: 1.15;
+    }
+    .ds-section-title i { font-style: italic; color: var(--accent); }
+    .ds-section-desc {
+      font-size: .9rem; font-weight: 300; color: var(--ink-3); line-height: 1.8;
+      max-width: 600px; margin-bottom: 56px;
+    }
+    .ds-label {
+      font-size: .62rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--ink-4); margin-bottom: 10px; display: block;
+    }
+    .ds-value {
+      font-size: .78rem; color: var(--ink-3); margin-top: 6px; font-family: 'Courier New', monospace;
+    }
+
+    /* ── Hero banner ── */
+    .ds-hero {
+      background: var(--dark); padding: 80px 52px 72px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .ds-hero__eyebrow {
+      font-size: .65rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .ds-hero__eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--accent); }
+    .ds-hero__title {
+      font-family: var(--serif); font-size: clamp(2.4rem, 5vw, 4.5rem);
+      font-weight: 500; letter-spacing: -.03em; color: #fff; line-height: 1.05;
+      margin-bottom: 20px;
+    }
+    .ds-hero__title i { font-style: italic; color: var(--accent); }
+    .ds-hero__sub {
+      font-size: .97rem; font-weight: 300; color: rgba(255,255,255,.45);
+      line-height: 1.8; max-width: 560px; margin-bottom: 48px;
+    }
+    .ds-hero__meta {
+      display: flex; gap: 48px; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.08); padding-top: 36px;
+    }
+    .ds-hero__meta-item {}
+    .ds-hero__meta-label { font-size: .62rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.25); margin-bottom: 6px; }
+    .ds-hero__meta-value { font-size: .88rem; font-weight: 500; color: rgba(255,255,255,.7); }
+
+    /* ── Color grid ── */
+    .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+    .color-swatch {
+      border: 1px solid var(--rule); overflow: hidden;
+      border-radius: var(--radius-md);
+    }
+    .color-swatch__block { height: 80px; }
+    .color-swatch__info { padding: 12px 14px; background: var(--white); }
+    .color-swatch__name { font-size: .75rem; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+    .color-swatch__hex { font-size: .7rem; color: var(--ink-4); font-family: 'Courier New', monospace; }
+    .color-swatch__token { font-size: .65rem; color: var(--accent); font-family: 'Courier New', monospace; margin-top: 3px; }
+
+    /* ── Type specimens ── */
+    .type-row {
+      display: grid; grid-template-columns: 140px 1fr 130px;
+      gap: 32px; align-items: baseline;
+      padding: 28px 0; border-bottom: 1px solid var(--rule-lt);
+    }
+    .type-row:last-child { border-bottom: none; }
+    .type-meta { font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-4); padding-top: 4px; }
+    .type-spec { font-size: .68rem; color: var(--ink-4); font-family: 'Courier New', monospace; text-align: right; line-height: 1.6; }
+    @media (max-width: 768px) { .type-row { grid-template-columns: 1fr; gap: 8px; } .type-spec { display: none; } }
+
+    /* ── Spacing scale ── */
+    .space-grid { display: flex; flex-direction: column; gap: 12px; }
+    .space-row { display: flex; align-items: center; gap: 20px; }
+    .space-bar-wrap { flex: 1; background: var(--rule-lt); height: 28px; position: relative; overflow: hidden; }
+    .space-bar { height: 100%; background: var(--accent); opacity: .18; }
+    .space-name { font-size: .72rem; font-weight: 600; color: var(--ink); width: 72px; flex-shrink: 0; font-family: 'Courier New', monospace; }
+    .space-px { font-size: .7rem; color: var(--ink-4); width: 52px; flex-shrink: 0; text-align: right; }
+
+    /* ── Button showcase ── */
+    .btn-grid { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 26px;
+      font-family: var(--sans); font-size: .78rem; font-weight: 600;
+      letter-spacing: .06em; text-transform: uppercase;
+      border: 1.5px solid transparent; cursor: pointer;
+      transition: background .2s, color .2s, border-color .2s, transform .18s;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-filled  { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn-filled:hover  { background: var(--accent-h); border-color: var(--accent-h); }
+    .btn-outline { background: transparent; color: var(--ink); border-color: var(--ink); }
+    .btn-outline:hover { background: var(--ink); color: var(--paper); }
+    .btn-outline-accent { background: transparent; color: var(--accent); border-color: var(--accent); }
+    .btn-outline-accent:hover { background: var(--accent); color: #fff; }
+    .btn-ghost { background: transparent; color: var(--ink-3); border-color: var(--rule); }
+    .btn-ghost:hover { background: var(--paper-2); }
+    .btn-sm { padding: 8px 18px; font-size: .7rem; }
+    .btn-lg { padding: 16px 36px; font-size: .85rem; }
+    .btn-dark { background: var(--dark); color: #fff; border-color: var(--dark); }
+    .btn-dark:hover { background: var(--ink-2); }
+
+    .btn-row-label {
+      font-size: .62rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--ink-4); margin-top: 32px; margin-bottom: 14px;
+    }
+
+    /* ── Form elements ── */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } }
+    .form-group { display: flex; flex-direction: column; gap: 7px; }
+    .form-label { font-size: .72rem; font-weight: 600; letter-spacing: .04em; color: var(--ink); }
+    .form-hint { font-size: .7rem; color: var(--ink-4); margin-top: -3px; }
+    .form-input {
+      width: 100%; padding: 11px 14px;
+      border: 1.5px solid var(--rule); background: var(--white);
+      font-family: var(--sans); font-size: .88rem; font-weight: 400; color: var(--ink);
+      outline: none; transition: border-color .18s, box-shadow .18s;
+    }
+    .form-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(26,79,255,.08); }
+    .form-input::placeholder { color: var(--ink-4); }
+    .form-input.is-error { border-color: var(--danger); }
+    .form-input.is-success { border-color: var(--success); }
+    .form-select {
+      width: 100%; padding: 11px 14px;
+      border: 1.5px solid var(--rule); background: var(--white);
+      font-family: var(--sans); font-size: .88rem; color: var(--ink);
+      outline: none; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6b6b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center;
+      cursor: pointer;
+    }
+    textarea.form-input { resize: vertical; min-height: 100px; }
+    .form-check { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+    .form-check input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; }
+    .form-check-label { font-size: .85rem; color: var(--ink-2); }
+    .field-error { font-size: .7rem; color: var(--danger); margin-top: 4px; }
+
+    /* ── Cards ── */
+    .card-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--rule); }
+    @media (max-width: 768px) { .card-grid { grid-template-columns: 1fr; } }
+    .card { background: var(--white); padding: 36px 30px; transition: background .2s; }
+    .card:hover { background: var(--paper); }
+    .card__num { font-family: var(--serif); font-style: italic; font-size: .85rem; color: var(--accent); margin-bottom: 18px; }
+    .card__icon { width: 44px; height: 44px; border: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 22px; }
+    .card__icon svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .card__title { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; letter-spacing: -.02em; color: var(--ink); margin-bottom: 12px; }
+    .card__body { font-size: .85rem; font-weight: 300; color: var(--ink-3); line-height: 1.75; }
+    .card__footer { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--rule-lt); font-size: .72rem; font-weight: 600; color: var(--accent); letter-spacing: .04em; text-transform: uppercase; }
+
+    /* ── Alert / Status ── */
+    .alert-grid { display: flex; flex-direction: column; gap: 12px; }
+    .alert { padding: 14px 18px; display: flex; align-items: flex-start; gap: 12px; font-size: .85rem; border: 1px solid; border-radius: var(--radius-sm); }
+    .alert svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; }
+    .alert-info   { background: rgba(26,79,255,.06);  border-color: rgba(26,79,255,.2);  color: var(--accent); }
+    .alert-success{ background: rgba(16,185,129,.06); border-color: rgba(16,185,129,.2); color: var(--success); }
+    .alert-warning{ background: rgba(245,158,11,.06); border-color: rgba(245,158,11,.2); color: #b45309; }
+    .alert-danger { background: rgba(239,68,68,.06);  border-color: rgba(239,68,68,.2);  color: var(--danger); }
+    .alert span { color: var(--ink-2); }
+
+    /* ── Badge / Tag ── */
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 12px; font-size: .65rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase; border-radius: var(--radius-full);
+    }
+    .badge-accent  { background: var(--accent-lt); color: var(--accent); }
+    .badge-dark    { background: var(--dark);      color: #fff; }
+    .badge-outline { background: transparent; border: 1px solid var(--rule); color: var(--ink-3); }
+    .badge-success { background: rgba(16,185,129,.1); color: var(--success); }
+    .badge-warning { background: rgba(245,158,11,.1); color: #b45309; }
+    .badge-danger  { background: rgba(239,68,68,.1); color: var(--danger); }
+
+    /* ── Navigation preview ── */
+    .nav-preview {
+      border: 1px solid var(--rule); background: rgba(250,250,248,.97);
+      padding: 0 40px; display: flex; align-items: center;
+      justify-content: space-between; height: 64px; position: relative;
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-preview__logo { font-size: .9rem; font-weight: 800; letter-spacing: -.02em; color: var(--ink); }
+    .nav-preview__logo span { font-weight: 300; color: var(--ink-3); }
+    .nav-preview__links { display: flex; align-items: center; gap: 28px; }
+    .nav-preview__links a { font-size: .75rem; font-weight: 500; color: var(--ink-2); letter-spacing: .02em; }
+    .nav-preview__links a.active { color: var(--accent); }
+    .nav-preview__cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 20px; font-size: .72rem; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      background: var(--accent); color: #fff; border: none; cursor: pointer;
+      transition: background .18s;
+    }
+    .nav-preview__cta:hover { background: var(--accent-h); }
+
+    /* ── Icon grid ── */
+    .icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px,1fr)); gap: 2px; background: var(--rule); }
+    .icon-cell { background: var(--white); padding: 24px 16px; display: flex; flex-direction: column; align-items: center; gap: 10px; transition: background .2s; }
+    .icon-cell:hover { background: var(--paper); }
+    .icon-cell svg { width: 24px; height: 24px; stroke: var(--accent); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .icon-cell span { font-size: .6rem; color: var(--ink-4); text-align: center; letter-spacing: .03em; }
+
+    /* ── Shadow showcase ── */
+    .shadow-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
+    @media (max-width: 768px) { .shadow-grid { grid-template-columns: 1fr 1fr; } }
+    .shadow-card {
+      background: var(--white); padding: 32px 24px;
+      display: flex; flex-direction: column; align-items: center; gap: 14px;
+    }
+    .shadow-box { width: 64px; height: 64px; background: var(--white); border: 1px solid var(--rule-lt); }
+    .shadow-name { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-4); }
+    .shadow-value { font-size: .62rem; color: var(--ink-4); font-family: 'Courier New', monospace; text-align: center; line-height: 1.5; }
+
+    /* ── Radius showcase ── */
+    .radius-grid { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-end; }
+    .radius-item { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .radius-box { width: 60px; height: 60px; background: var(--accent); opacity: .15; }
+    .radius-label { font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-4); }
+    .radius-value { font-size: .62rem; color: var(--ink-4); font-family: 'Courier New', monospace; }
+
+    /* ── Divider strip ── */
+    .ds-divider { background: var(--paper-2); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 12px 52px; display: flex; align-items: center; gap: 10px; margin: 0; }
+    .ds-divider span { font-size: .62rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-4); }
+
+    /* ── Dark section preview ── */
+    .dark-preview { background: var(--dark); padding: 56px 48px; border-radius: var(--radius-md); }
+    .dark-preview h3 { font-family: var(--serif); font-size: 2rem; font-weight: 500; color: #fff; letter-spacing: -.025em; margin-bottom: 12px; }
+    .dark-preview h3 i { font-style: italic; color: var(--accent); }
+    .dark-preview p { font-size: .9rem; font-weight: 300; color: rgba(255,255,255,.4); line-height: 1.8; margin-bottom: 28px; max-width: 480px; }
+    .dark-preview .btn-outline-w { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.3); padding: 11px 24px; font-size: .76rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: background .18s, border-color .18s; }
+    .dark-preview .btn-outline-w:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.5); }
+
+    /* ── Grid preview ── */
+    .grid-preview { display: grid; gap: 2px; background: var(--rule); }
+    .grid-2  { grid-template-columns: 1fr 1fr; }
+    .grid-3  { grid-template-columns: 1fr 1fr 1fr; }
+    .grid-4  { grid-template-columns: repeat(4,1fr); }
+    .grid-cell { background: rgba(26,79,255,.06); padding: 24px 20px; font-size: .72rem; font-weight: 600; color: var(--accent); letter-spacing: .04em; text-align: center; border: 1px dashed rgba(26,79,255,.15); }
+
+    /* ── Pill / tag ── */
+    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill {
+      font-size: .75rem; font-weight: 500; color: var(--ink-3);
+      letter-spacing: .02em; padding: 7px 18px;
+      border: 1px solid var(--rule); border-radius: 100px;
+      transition: background .18s, border-color .18s, color .18s;
+    }
+    .pill:hover, .pill.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+    /* ── CMS / Stat strip ── */
+    .stat-strip { display: flex; gap: 1px; background: var(--rule); }
+    .stat-cell { background: var(--white); padding: 28px 32px; flex: 1; }
+    .stat-num { font-family: var(--serif); font-size: 2.4rem; font-weight: 400; letter-spacing: -.04em; color: var(--ink); line-height: 1; margin-bottom: 6px; }
+    .stat-num em { color: var(--accent); font-style: normal; }
+    .stat-label { font-size: .68rem; font-weight: 400; color: var(--ink-4); letter-spacing: .04em; }
+
+    /* ── Testimonial card ── */
+    .testi { background: var(--paper-2); border: 1px solid var(--rule); padding: 32px 28px; }
+    .testi__quote { font-size: .95rem; font-weight: 300; color: var(--ink-2); line-height: 1.8; font-style: italic; margin-bottom: 24px; }
+    .testi__author { display: flex; align-items: center; gap: 14px; }
+    .testi__avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: .8rem; font-weight: 700; color: #fff; flex-shrink: 0; }
+    .testi__name { font-size: .82rem; font-weight: 700; color: var(--ink); }
+    .testi__role { font-size: .72rem; color: var(--ink-4); margin-top: 2px; }
+
+    /* ── Accessibility bar ── */
+    .a11y-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 768px) { .a11y-grid { grid-template-columns: 1fr; } }
+    .a11y-pair { display: flex; align-items: stretch; border: 1px solid var(--rule); overflow: hidden; }
+    .a11y-bg { padding: 20px 24px; display: flex; align-items: center; justify-content: center; flex: 1; }
+    .a11y-text { font-size: 1.1rem; font-weight: 600; }
+    .a11y-meta { padding: 12px 16px; border-left: 1px solid var(--rule); background: var(--white); display: flex; flex-direction: column; justify-content: center; min-width: 80px; }
+    .a11y-ratio { font-size: .75rem; font-weight: 700; color: var(--ink); }
+    .a11y-grade { font-size: .65rem; font-weight: 700; letter-spacing: .08em; margin-top: 3px; }
+    .pass { color: var(--success); }
+    .fail { color: var(--danger); }
+  </style>
+</head>
+<body>
+
+<!-- ── Sticky Design System Nav ── -->
+<nav class="ds-nav">
+  <div class="ds-nav__brand"><span>CITS</span> — Design System</div>
+  <div class="ds-nav__links">
+    <a href="#colors">Colours</a>
+    <a href="#typography">Typography</a>
+    <a href="#spacing">Spacing</a>
+    <a href="#buttons">Buttons</a>
+    <a href="#forms">Forms</a>
+    <a href="#components">Components</a>
+    <a href="#icons">Icons</a>
+    <a href="#layout">Layout</a>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="ds-hero">
+  <div class="ds-hero__eyebrow">Design System · v1.0</div>
+  <h1 class="ds-hero__title">CITS <i>Design Language</i></h1>
+  <p class="ds-hero__sub">The complete visual foundation for Comprehensive IT Solutions. Every colour, typeface, space unit, and component documented in one place to ensure consistent, accessible, on-brand experiences across all touchpoints.</p>
+  <div class="ds-hero__meta">
+    <div class="ds-hero__meta-item">
+      <div class="ds-hero__meta-label">Brand</div>
+      <div class="ds-hero__meta-value">Comprehensive IT Solutions (CITS)</div>
+    </div>
+    <div class="ds-hero__meta-item">
+      <div class="ds-hero__meta-label">Website</div>
+      <div class="ds-hero__meta-value">CITS-global.co.uk</div>
+    </div>
+    <div class="ds-hero__meta-item">
+      <div class="ds-hero__meta-label">Primary Typeface</div>
+      <div class="ds-hero__meta-value">Playfair Display + Manrope</div>
+    </div>
+    <div class="ds-hero__meta-item">
+      <div class="ds-hero__meta-label">Accent Colour</div>
+      <div class="ds-hero__meta-value" style="color:#1a4fff;">#1A4FFF</div>
+    </div>
+    <div class="ds-hero__meta-item">
+      <div class="ds-hero__meta-label">Version</div>
+      <div class="ds-hero__meta-value">April 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 1. COLOURS -->
+<!-- ══════════════════════════════════════════ -->
+<div class="ds-divider" id="colors"><span>01 — Colour System</span></div>
+<section class="ds-section">
+  <div class="wrap">
+    <div class="ds-section-label">Colour System</div>
+    <h2 class="ds-section-title">Brand <i>Palette</i></h2>
+    <p class="ds-section-desc">A restrained, editorial palette built around warm paper tones, near-black ink, and a bold cobalt-blue accent. Designed for clarity and legibility at all sizes.</p>
+
+    <span class="ds-label">Primary &amp; Accent</span>
+    <div class="color-grid" style="margin-bottom:40px;">
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#1a4fff;"></div>
+        <div class="color-swatch__info">
+          <div class="color-swatch__name">Accent Blue</div>
+          <div class="color-swatch__hex">#1A4FFF</div>
+          <div class="color-swatch__token">--accent</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#1640e8;"></div>
+        <div class="color-swatch__info">
+          <div class="color-swatch__name">Accent Hover</div>
+          <div class="color-swatch__hex">#1640E8</div>
+          <div class="color-swatch__token">--accent-h</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#e8eeff; border-bottom:1px solid #e0e0e0;"></div>
+        <div class="color-swatch__info">
+          <div class="color-swatch__name">Accent Light</div>
+          <div class="color-swatch__hex">#E8EEFF</div>
+          <div class="color-swatch__token">--accent-lt</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#0d0d0d;"></div>
+        <div class="color-swatch__info">
+          <div class="color-swatch__name">Dark / Ink</div>
+          <div class="color-swatch__hex">#0D0D0D</div>
+          <div class="color-swatch__token">--dark / --ink</div>
+        </div>
+      </div>
+    </div>
+
+    <span class="ds-label">Paper Backgrounds</span>
+    <div class="color-grid" style="margin-bottom:40px;">
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#fafaf8; border-bottom:1px solid #e0e0e0;"></div>
+        <div class="color-swatch__info">
+          <div class="color-swatch__name">Paper</div>
+          <div class="color-swatch__hex">#FAFAF8</div>
+          <div class="color-swatch__token">--paper</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#f3f2ef; border-bottom:1px solid #e0e0e0;"></div>
+        <div class="color-swatch__info">
+          <div class="color-swatch__name">Paper Alt</div>
+          <div class="color-swatch__hex">#F3F2EF</div>
+          <div class="color-swatch__token">--paper-2</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#ffffff; border-bottom:1px solid #e0e0e0;"></div>
+        <div class="color-swatch__info">
+          <div class="color-swatch__name">White</div>
+          <div class="color-swatch__hex">#FFFFFF</div>
+          <div class="color-swatch__token">--white</div>
+        </div>
+      </div>
+    </div>
+
+    <span class="ds-label">Ink / Text</span>
+    <div class="color-grid" style="margin-bottom:40px;">
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#0d0d0d;"></div>
+        <div class="color-swatch__info">
+          <div class="color-swatch__name">Ink</div>
+          <div class="color-swatch__hex">#0D0D0D</div>
+          <div class="color-swatch__token">--ink</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#2b2b2b;"></div>
+        <div class="color-swatch__info">
+          <div class="color-swatch__name">Ink 2</div>
+          <div class="color-swatch__hex">#2B2B2B</div>
+          <div class="color-swatch__token">--ink-2</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#6b6b6b;"></div>
+        <div class="color-swatch__info">
+          <div class="color-swatch__name">Ink 3 (Body)</div>
+          <div class="color-swatch__hex">#6B6B6B</div>
+          <div class="color-swatch__token">--ink-3</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#a0a0a0;"></div>
+        <div class="color-swatch__info">
+          <div class="color-swatch__name">Ink 4 (Muted)</div>
+          <div class="color-swatch__hex">#A0A0A0</div>
+          <div class="color-swatch__token">--ink-4</div>
+        </div>
+      </div>
+    </div>
+
+    <span class="ds-label">Rules &amp; Borders</span>
+    <div class="color-grid" style="margin-bottom:40px;">
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#e0e0e0;"></div>
+        <div class="color-swatch__info">
+          <div class="color-swatch__name">Rule</div>
+          <div class="color-swatch__hex">#E0E0E0</div>
+          <div class="color-swatch__token">--rule</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#f0f0f0;"></div>
+        <div class="color-swatch__info">
+          <div class="color-swatch__name">Rule Light</div>
+          <div class="color-swatch__hex">#F0F0F0</div>
+          <div class="color-swatch__token">--rule-lt</div>
+        </div>
+      </div>
+    </div>
+
+    <span class="ds-label">Semantic / Status</span>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#10b981;"></div>
+        <div class="color-swatch__info">
+          <div class="color-swatch__name">Success</div>
+          <div class="color-swatch__hex">#10B981</div>
+          <div class="color-swatch__token">--success</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#f59e0b;"></div>
+        <div class="color-swatch__info">
+          <div class="color-swatch__name">Warning</div>
+          <div class="color-swatch__hex">#F59E0B</div>
+          <div class="color-swatch__token">--warning</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch__block" style="background:#ef4444;"></div>
+        <div class="color-swatch__info">
+          <div class="color-swatch__name">Danger</div>
+          <div class="color-swatch__hex">#EF4444</div>
+          <div class="color-swatch__token">--danger</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 2. TYPOGRAPHY -->
+<!-- ══════════════════════════════════════════ -->
+<div class="ds-divider" id="typography"><span>02 — Typography</span></div>
+<section class="ds-section" style="background:var(--white);">
+  <div class="wrap">
+    <div class="ds-section-label">Typography</div>
+    <h2 class="ds-section-title">Type <i>System</i></h2>
+    <p class="ds-section-desc">Two complementary typefaces. Playfair Display brings editorial authority to headings; Manrope provides crisp legibility for body copy and UI labels.</p>
+
+    <!-- Typefaces -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:56px;">
+      <div style="border:1px solid var(--rule);padding:36px 32px;">
+        <span class="ds-label">Display / Headings</span>
+        <div style="font-family:var(--serif);font-size:2.8rem;color:var(--ink);line-height:1.05;letter-spacing:-.03em;margin-bottom:16px;">Playfair Display</div>
+        <div style="font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--ink-3);line-height:1.7;margin-bottom:14px;">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 &amp;!?.,</div>
+        <div style="font-family:var(--serif);font-size:1rem;font-style:italic;color:var(--accent);">The quick brown fox jumps over the lazy dog</div>
+        <div class="ds-value" style="margin-top:12px;">Google Fonts · Weights: 400, 500 · Italic available</div>
+      </div>
+      <div style="border:1px solid var(--rule);padding:36px 32px;">
+        <span class="ds-label">Body / UI</span>
+        <div style="font-family:var(--sans);font-size:2.8rem;font-weight:800;color:var(--ink);line-height:1.05;letter-spacing:-.03em;margin-bottom:16px;">Manrope</div>
+        <div style="font-family:var(--sans);font-size:1.1rem;font-weight:400;color:var(--ink-3);line-height:1.7;margin-bottom:14px;">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 &amp;!?.,</div>
+        <div style="font-family:var(--sans);font-size:1rem;font-weight:300;color:var(--accent);">The quick brown fox jumps over the lazy dog</div>
+        <div class="ds-value" style="margin-top:12px;">Google Fonts · Weights: 300, 400, 500, 600, 700, 800</div>
+      </div>
+    </div>
+
+    <!-- Scale -->
+    <span class="ds-label" style="margin-bottom:24px;display:block;">Display Scale (Serif)</span>
+    <div style="margin-bottom:40px;">
+      <div class="type-row">
+        <div class="type-meta">Display / Hero</div>
+        <div style="font-family:var(--serif);font-size:clamp(2.4rem,4vw,4rem);font-weight:500;letter-spacing:-.025em;color:var(--ink);line-height:1.05;">Managed IT <i style="color:var(--accent);">Services</i></div>
+        <div class="type-spec">clamp(2.4rem,4vw,4rem)<br>weight:500<br>Playfair Display</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Section Title</div>
+        <div style="font-family:var(--serif);font-size:clamp(1.9rem,2.8vw,2.8rem);font-weight:500;letter-spacing:-.025em;color:var(--ink);line-height:1.18;">Your <i style="color:var(--accent);">technology</i> partner</div>
+        <div class="type-spec">clamp(1.9rem,2.8vw,2.8rem)<br>weight:500</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">CTA Strip</div>
+        <div style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,3.2rem);font-weight:500;letter-spacing:-.025em;color:var(--ink);line-height:1.15;">Ready to <i style="color:var(--accent);">transform?</i></div>
+        <div class="type-spec">clamp(2rem,3.5vw,3.2rem)<br>weight:500</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Card Title</div>
+        <div style="font-family:var(--serif);font-size:1.4rem;font-weight:500;letter-spacing:-.02em;color:var(--ink);">Cybersecurity Solutions</div>
+        <div class="type-spec">1.4rem · weight:500</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Stat Number</div>
+        <div style="font-family:var(--serif);font-size:2.4rem;font-weight:400;letter-spacing:-.04em;color:var(--ink);">200<em style="color:var(--accent);font-style:normal;">+</em></div>
+        <div class="type-spec">2.4rem · weight:400<br>em → accent colour</div>
+      </div>
+    </div>
+
+    <span class="ds-label" style="margin-bottom:24px;display:block;">Body Scale (Sans)</span>
+    <div>
+      <div class="type-row">
+        <div class="type-meta">Body Large</div>
+        <div style="font-size:1rem;font-weight:400;color:var(--ink-2);line-height:1.7;">We deliver proactive, enterprise-grade managed IT services tailored for UK businesses.</div>
+        <div class="type-spec">1rem · weight:400<br>line-height:1.7</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Body / Lead</div>
+        <div style="font-size:.97rem;font-weight:300;color:var(--ink-3);line-height:1.8;">Delivering measurable outcomes through strategic technology, process automation, and expert support — all from a single trusted partner.</div>
+        <div class="type-spec">.97rem · weight:300<br>line-height:1.8</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Body Small</div>
+        <div style="font-size:.87rem;font-weight:300;color:var(--ink-3);line-height:1.75;">Proactive monitoring, patch management, and helpdesk support to keep your infrastructure running at peak performance.</div>
+        <div class="type-spec">.87rem · weight:300</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Label / Nav</div>
+        <div style="font-size:.75rem;font-weight:500;color:var(--ink-2);letter-spacing:.02em;">Services &nbsp; About &nbsp; Contact</div>
+        <div class="type-spec">.75rem · weight:500<br>letter-spacing:.02em</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Eyebrow / Kicker</div>
+        <div style="font-size:.67rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-4);">Our Services</div>
+        <div class="type-spec">.67rem · weight:700<br>letter-spacing:.18em · uppercase</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Button / CTA</div>
+        <div style="font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);">Book a Free Consultation</div>
+        <div class="type-spec">.78rem · weight:600<br>letter-spacing:.06em · uppercase</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Caption</div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);">01 — Colour System</div>
+        <div class="type-spec">.65rem · weight:700<br>letter-spacing:.2em · accent</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Serif Italic Number</div>
+        <div style="font-family:var(--serif);font-style:italic;font-size:.85rem;color:var(--accent);">01.</div>
+        <div class="type-spec">Playfair Display<br>.85rem · italic · accent</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 3. SPACING -->
+<!-- ══════════════════════════════════════════ -->
+<div class="ds-divider" id="spacing"><span>03 — Spacing &amp; Sizing</span></div>
+<section class="ds-section">
+  <div class="wrap">
+    <div class="ds-section-label">Spacing</div>
+    <h2 class="ds-section-title">Space <i>Scale</i></h2>
+    <p class="ds-section-desc">A consistent spacing scale based on rem units. Use these tokens for margins, paddings, and gaps to maintain visual rhythm.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
+      <div class="space-grid">
+        <div class="space-row"><span class="space-name">4px</span><div class="space-bar-wrap"><div class="space-bar" style="width:4px;opacity:.5;"></div></div><span class="space-px">0.25rem</span></div>
+        <div class="space-row"><span class="space-name">8px</span><div class="space-bar-wrap"><div class="space-bar" style="width:8px;opacity:.5;"></div></div><span class="space-px">0.5rem</span></div>
+        <div class="space-row"><span class="space-name">12px</span><div class="space-bar-wrap"><div class="space-bar" style="width:12px;opacity:.5;"></div></div><span class="space-px">0.75rem</span></div>
+        <div class="space-row"><span class="space-name">16px</span><div class="space-bar-wrap"><div class="space-bar" style="width:16px;opacity:.5;"></div></div><span class="space-px">1rem</span></div>
+        <div class="space-row"><span class="space-name">20px</span><div class="space-bar-wrap"><div class="space-bar" style="width:20px;"></div></div><span class="space-px">1.25rem</span></div>
+        <div class="space-row"><span class="space-name">24px</span><div class="space-bar-wrap"><div class="space-bar" style="width:24px;"></div></div><span class="space-px">1.5rem</span></div>
+        <div class="space-row"><span class="space-name">32px</span><div class="space-bar-wrap"><div class="space-bar" style="width:32px;"></div></div><span class="space-px">2rem</span></div>
+        <div class="space-row"><span class="space-name">40px</span><div class="space-bar-wrap"><div class="space-bar" style="width:40px;"></div></div><span class="space-px">2.5rem</span></div>
+        <div class="space-row"><span class="space-name">48px</span><div class="space-bar-wrap"><div class="space-bar" style="width:48px;"></div></div><span class="space-px">3rem</span></div>
+        <div class="space-row"><span class="space-name">64px</span><div class="space-bar-wrap"><div class="space-bar" style="width:64px;"></div></div><span class="space-px">4rem</span></div>
+        <div class="space-row"><span class="space-name">80px</span><div class="space-bar-wrap"><div class="space-bar" style="width:80px;"></div></div><span class="space-px">5rem</span></div>
+        <div class="space-row"><span class="space-name">88px</span><div class="space-bar-wrap"><div class="space-bar" style="width:88px;"></div></div><span class="space-px">5.5rem</span></div>
+      </div>
+      <div>
+        <span class="ds-label" style="margin-bottom:20px;display:block;">Border Radius</span>
+        <div class="radius-grid" style="margin-bottom:40px;">
+          <div class="radius-item">
+            <div class="radius-box" style="border-radius:0;"></div>
+            <div class="radius-label">None</div>
+            <div class="radius-value">0px</div>
+          </div>
+          <div class="radius-item">
+            <div class="radius-box" style="border-radius:4px;"></div>
+            <div class="radius-label">SM</div>
+            <div class="radius-value">4px</div>
+          </div>
+          <div class="radius-item">
+            <div class="radius-box" style="border-radius:8px;"></div>
+            <div class="radius-label">MD</div>
+            <div class="radius-value">8px</div>
+          </div>
+          <div class="radius-item">
+            <div class="radius-box" style="border-radius:12px;"></div>
+            <div class="radius-label">LG</div>
+            <div class="radius-value">12px</div>
+          </div>
+          <div class="radius-item">
+            <div class="radius-box" style="border-radius:9999px;width:60px;height:28px;"></div>
+            <div class="radius-label">Full</div>
+            <div class="radius-value">9999px</div>
+          </div>
+        </div>
+        <span class="ds-label" style="margin-bottom:16px;display:block;">Elevation / Shadows</span>
+        <div class="shadow-grid" style="grid-template-columns:1fr 1fr;">
+          <div class="shadow-card" style="box-shadow:none;border:1px solid var(--rule);">
+            <div class="shadow-box" style="box-shadow:none;"></div>
+            <div class="shadow-name">Flat</div>
+            <div class="shadow-value">none</div>
+          </div>
+          <div class="shadow-card" style="box-shadow:0 1px 3px rgba(0,0,0,.06);border:1px solid var(--rule);">
+            <div class="shadow-box" style="box-shadow:0 1px 3px rgba(0,0,0,.06);"></div>
+            <div class="shadow-name">SM</div>
+            <div class="shadow-value">0 1px 3px rgba(0,0,0,.06)</div>
+          </div>
+          <div class="shadow-card" style="box-shadow:0 4px 12px rgba(0,0,0,.08);border:1px solid var(--rule);">
+            <div class="shadow-box" style="box-shadow:0 4px 12px rgba(0,0,0,.08);"></div>
+            <div class="shadow-name">MD</div>
+            <div class="shadow-value">0 4px 12px rgba(0,0,0,.08)</div>
+          </div>
+          <div class="shadow-card" style="box-shadow:0 12px 40px rgba(0,0,0,.10);border:1px solid var(--rule);">
+            <div class="shadow-box" style="box-shadow:0 12px 40px rgba(0,0,0,.10);"></div>
+            <div class="shadow-name">LG</div>
+            <div class="shadow-value">0 12px 40px rgba(0,0,0,.10)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 4. BUTTONS -->
+<!-- ══════════════════════════════════════════ -->
+<div class="ds-divider" id="buttons"><span>04 — Buttons &amp; CTAs</span></div>
+<section class="ds-section" style="background:var(--white);">
+  <div class="wrap">
+    <div class="ds-section-label">Buttons</div>
+    <h2 class="ds-section-title">Calls to <i>Action</i></h2>
+    <p class="ds-section-desc">Consistent button styles for every context. The primary CTA across the entire site is <strong>Book a Free Consultation</strong>.</p>
+
+    <span class="ds-label">Variants</span>
+    <div class="btn-grid">
+      <button class="btn btn-filled">Book a Free Consultation</button>
+      <button class="btn btn-outline">Learn More →</button>
+      <button class="btn btn-outline-accent">View Services</button>
+      <button class="btn btn-ghost">Secondary Action</button>
+      <button class="btn btn-dark">Download Guide</button>
+    </div>
+
+    <div class="btn-row-label">Sizes</div>
+    <div class="btn-grid">
+      <button class="btn btn-filled btn-sm">Book a Free Consultation</button>
+      <button class="btn btn-filled">Book a Free Consultation</button>
+      <button class="btn btn-filled btn-lg">Book a Free Consultation</button>
+    </div>
+
+    <div class="btn-row-label">Dark Background</div>
+    <div style="background:var(--dark);padding:32px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+      <button class="btn btn-filled">Book a Free Consultation</button>
+      <button style="display:inline-flex;align-items:center;gap:8px;padding:11px 24px;font-size:.76rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.3);cursor:pointer;transition:background .18s;font-family:var(--sans);">View Case Studies</button>
+    </div>
+
+    <div class="btn-row-label">With Icons</div>
+    <div class="btn-grid">
+      <button class="btn btn-filled">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.014 1.22A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v2.92z"/></svg>
+        Book a Free Consultation
+      </button>
+      <button class="btn btn-outline">
+        View All Services
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 5. FORMS -->
+<!-- ══════════════════════════════════════════ -->
+<div class="ds-divider" id="forms"><span>05 — Form Elements</span></div>
+<section class="ds-section">
+  <div class="wrap">
+    <div class="ds-section-label">Forms</div>
+    <h2 class="ds-section-title">Input <i>Components</i></h2>
+    <p class="ds-section-desc">Form fields provide clear focus states, inline validation, and accessible labelling. Forms use Web3Forms for serverless submission.</p>
+
+    <div class="form-grid" style="margin-bottom:32px;">
+      <div class="form-group">
+        <label class="form-label" for="ds-name">Full Name *</label>
+        <input class="form-input" id="ds-name" type="text" placeholder="Jane Smith">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ds-email">Email Address *</label>
+        <input class="form-input" id="ds-email" type="email" placeholder="jane@company.co.uk">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ds-phone">Phone Number</label>
+        <span class="form-hint">Optional — we won't spam you</span>
+        <input class="form-input" id="ds-phone" type="tel" placeholder="+44 20 0000 0000">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ds-service">Service Required *</label>
+        <select class="form-select" id="ds-service">
+          <option value="" disabled selected>Select a service…</option>
+          <option>Managed IT Services</option>
+          <option>Cybersecurity</option>
+          <option>Compliance &amp; Risk</option>
+          <option>Cloud &amp; Communications</option>
+          <option>Infrastructure</option>
+        </select>
+      </div>
+      <div class="form-group" style="grid-column:span 2;">
+        <label class="form-label" for="ds-msg">Message *</label>
+        <textarea class="form-input" id="ds-msg" rows="4" placeholder="Tell us about your project or requirements…"></textarea>
+      </div>
+    </div>
+
+    <span class="ds-label" style="margin-bottom:16px;display:block;">States</span>
+    <div class="form-grid" style="margin-bottom:32px;">
+      <div class="form-group">
+        <label class="form-label">Default State</label>
+        <input class="form-input" type="text" placeholder="Default input">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Focus State</label>
+        <input class="form-input" type="text" value="Focused input" style="border-color:var(--accent);box-shadow:0 0 0 3px rgba(26,79,255,.08);">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Error State</label>
+        <input class="form-input is-error" type="text" value="Invalid email">
+        <span class="field-error">Please enter a valid email address</span>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Success State</label>
+        <input class="form-input is-success" type="text" value="jane@company.co.uk">
+      </div>
+    </div>
+
+    <span class="ds-label" style="margin-bottom:16px;display:block;">Checkboxes &amp; Consent</span>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <label class="form-check">
+        <input type="checkbox"> <span class="form-check-label">I agree to the <a href="#" style="color:var(--accent);">Privacy Policy</a> and consent to being contacted.</span>
+      </label>
+      <label class="form-check">
+        <input type="checkbox" checked> <span class="form-check-label">Keep me informed about CITS news and service updates.</span>
+      </label>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 6. COMPONENTS -->
+<!-- ══════════════════════════════════════════ -->
+<div class="ds-divider" id="components"><span>06 — Components</span></div>
+<section class="ds-section" style="background:var(--white);">
+  <div class="wrap">
+    <div class="ds-section-label">Components</div>
+    <h2 class="ds-section-title">UI <i>Building Blocks</i></h2>
+    <p class="ds-section-desc">Reusable components assembled from the colour, type, and spacing tokens above.</p>
+
+    <!-- Navigation -->
+    <span class="ds-label" style="margin-bottom:16px;display:block;">Navigation Bar</span>
+    <div class="nav-preview" style="margin-bottom:40px;">
+      <div class="nav-preview__logo">CITS<span> Comprehensive IT Solutions</span></div>
+      <div class="nav-preview__links">
+        <a href="#" class="active">Home</a>
+        <a href="#">Services ▾</a>
+        <a href="#">About</a>
+        <a href="#">Industries ▾</a>
+        <a href="#">Contact</a>
+      </div>
+      <button class="nav-preview__cta">Book a Free Consultation</button>
+    </div>
+
+    <!-- Cards -->
+    <span class="ds-label" style="margin-bottom:16px;display:block;">Feature Cards</span>
+    <div class="card-grid" style="margin-bottom:40px;">
+      <div class="card">
+        <div class="card__num">01.</div>
+        <div class="card__icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="card__title">Managed IT Services</div>
+        <div class="card__body">Proactive monitoring, remote support, and on-site assistance — keeping your business running 24/7.</div>
+        <div class="card__footer">Learn More →</div>
+      </div>
+      <div class="card">
+        <div class="card__num">02.</div>
+        <div class="card__icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="card__title">Cyber Security</div>
+        <div class="card__body">Multi-layered protection with threat detection, penetration testing, and employee awareness training.</div>
+        <div class="card__footer">Learn More →</div>
+      </div>
+      <div class="card">
+        <div class="card__num">03.</div>
+        <div class="card__icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="card__title">Cloud &amp; Communications</div>
+        <div class="card__body">Microsoft 365, Azure migrations, VoIP, and unified communications platforms tailored to your team.</div>
+        <div class="card__footer">Learn More →</div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <span class="ds-label" style="margin-bottom:16px;display:block;">Stat Strip</span>
+    <div class="stat-strip" style="margin-bottom:40px;">
+      <div class="stat-cell"><div class="stat-num">200<em>+</em></div><div class="stat-label">Clients Supported</div></div>
+      <div class="stat-cell"><div class="stat-num">99.9<em>%</em></div><div class="stat-label">Uptime Guarantee</div></div>
+      <div class="stat-cell"><div class="stat-num">15<em>min</em></div><div class="stat-label">Avg. Response Time</div></div>
+      <div class="stat-cell"><div class="stat-num">18<em>yr</em></div><div class="stat-label">Industry Experience</div></div>
+    </div>
+
+    <!-- Badges -->
+    <span class="ds-label" style="margin-bottom:16px;display:block;">Badges &amp; Tags</span>
+    <div class="badge-row" style="margin-bottom:40px;">
+      <span class="badge badge-accent">Managed IT</span>
+      <span class="badge badge-dark">ISO 27001</span>
+      <span class="badge badge-outline">Cyber Essentials</span>
+      <span class="badge badge-success">Active</span>
+      <span class="badge badge-warning">Pending</span>
+      <span class="badge badge-danger">Critical</span>
+    </div>
+
+    <!-- Pills -->
+    <span class="ds-label" style="margin-bottom:16px;display:block;">Pill Navigation</span>
+    <div class="pill-row" style="margin-bottom:40px;">
+      <a class="pill active" href="#">Managed IT</a>
+      <a class="pill" href="#">Cybersecurity</a>
+      <a class="pill" href="#">Compliance</a>
+      <a class="pill" href="#">Cloud &amp; Comms</a>
+      <a class="pill" href="#">Infrastructure</a>
+      <a class="pill" href="#">About</a>
+      <a class="pill" href="#">Contact</a>
+    </div>
+
+    <!-- Alert / Status -->
+    <span class="ds-label" style="margin-bottom:16px;display:block;">Alerts &amp; Notifications</span>
+    <div class="alert-grid" style="margin-bottom:40px;">
+      <div class="alert alert-info">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span><strong>Info:</strong> Your consultation has been booked for Tuesday 7 April at 10:00 AM.</span>
+      </div>
+      <div class="alert alert-success">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span><strong>Success:</strong> Your enquiry has been submitted. We'll be in touch within 2 hours.</span>
+      </div>
+      <div class="alert alert-warning">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span><strong>Warning:</strong> Your SSL certificate expires in 14 days. Renew to avoid downtime.</span>
+      </div>
+      <div class="alert alert-danger">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        <span><strong>Alert:</strong> Unusual login detected from an unrecognised device. Verify immediately.</span>
+      </div>
+    </div>
+
+    <!-- Testimonial -->
+    <span class="ds-label" style="margin-bottom:16px;display:block;">Testimonial Card</span>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px;">
+      <div class="testi">
+        <div class="testi__quote">"CITS transformed our entire IT infrastructure. Downtime dropped by 90% and our team can now focus on what they do best — not on IT problems."</div>
+        <div class="testi__author">
+          <div class="testi__avatar">SB</div>
+          <div>
+            <div class="testi__name">Sarah Bennett</div>
+            <div class="testi__role">Operations Director, BennettGroup Ltd</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi">
+        <div class="testi__quote">"The cyber security audit uncovered critical vulnerabilities we didn't know existed. The team resolved everything within 72 hours — outstanding service."</div>
+        <div class="testi__author">
+          <div class="testi__avatar">MK</div>
+          <div>
+            <div class="testi__name">Marcus King</div>
+            <div class="testi__role">Head of IT, Praxis Financial Services</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dark Section Preview -->
+    <span class="ds-label" style="margin-bottom:16px;display:block;">Dark Band Component</span>
+    <div class="dark-preview" style="margin-bottom:40px;">
+      <h3>Ready to <i>transform</i> your IT?</h3>
+      <p>Partner with CITS for proactive support, enterprise-grade security, and technology that scales with your ambitions.</p>
+      <button class="btn-outline-w">Book a Free Consultation</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 7. ICONS -->
+<!-- ══════════════════════════════════════════ -->
+<div class="ds-divider" id="icons"><span>07 — Iconography</span></div>
+<section class="ds-section">
+  <div class="wrap">
+    <div class="ds-section-label">Iconography</div>
+    <h2 class="ds-section-title">Icon <i>Library</i></h2>
+    <p class="ds-section-desc">All icons are inline SVG using Heroicons-style stroked lines. Standard size: 20–24px. Stroke width: 1.5px. Colour: <code style="font-size:.85em;background:var(--accent-lt);color:var(--accent);padding:2px 6px;">var(--accent)</code> or <code style="font-size:.85em;background:var(--paper-2);padding:2px 6px;">currentColor</code> for inheritance.</p>
+
+    <div class="icon-grid">
+      <!-- Shield -->
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Security</span>
+      </div>
+      <!-- Server -->
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+        <span>Server</span>
+      </div>
+      <!-- Cloud -->
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>
+        <span>Cloud</span>
+      </div>
+      <!-- Monitor -->
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <span>Monitor</span>
+      </div>
+      <!-- Lock -->
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        <span>Lock</span>
+      </div>
+      <!-- Wifi -->
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+        <span>Network</span>
+      </div>
+      <!-- Settings -->
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        <span>Settings</span>
+      </div>
+      <!-- Database -->
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        <span>Database</span>
+      </div>
+      <!-- Phone -->
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.014 1.22A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v2.92z"/></svg>
+        <span>Phone</span>
+      </div>
+      <!-- Mail -->
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>Email</span>
+      </div>
+      <!-- Chart -->
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <span>Analytics</span>
+      </div>
+      <!-- Users -->
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        <span>Team</span>
+      </div>
+      <!-- Check Circle -->
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span>Compliance</span>
+      </div>
+      <!-- Building -->
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Office</span>
+      </div>
+      <!-- Globe -->
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        <span>Global</span>
+      </div>
+      <!-- Arrow Right -->
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <span>Arrow</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 8. LAYOUT -->
+<!-- ══════════════════════════════════════════ -->
+<div class="ds-divider" id="layout"><span>08 — Layout &amp; Accessibility</span></div>
+<section class="ds-section" style="background:var(--white);">
+  <div class="wrap">
+    <div class="ds-section-label">Layout</div>
+    <h2 class="ds-section-title">Grid &amp; <i>Breakpoints</i></h2>
+    <p class="ds-section-desc">All layouts use CSS Grid. Max container width is 1300px with 52px horizontal padding (24px on mobile). Key breakpoints: 540px, 640px, 768px, 900px.</p>
+
+    <span class="ds-label" style="margin-bottom:16px;display:block;">2-Column Grid</span>
+    <div class="grid-preview grid-2" style="margin-bottom:16px;">
+      <div class="grid-cell">Col 1 (1fr)</div>
+      <div class="grid-cell">Col 2 (1fr)</div>
+    </div>
+
+    <span class="ds-label" style="margin-bottom:16px;display:block;">3-Column Grid</span>
+    <div class="grid-preview grid-3" style="margin-bottom:16px;">
+      <div class="grid-cell">Col 1</div>
+      <div class="grid-cell">Col 2</div>
+      <div class="grid-cell">Col 3</div>
+    </div>
+
+    <span class="ds-label" style="margin-bottom:16px;display:block;">4-Column Grid</span>
+    <div class="grid-preview grid-4" style="margin-bottom:48px;">
+      <div class="grid-cell">Col 1</div>
+      <div class="grid-cell">Col 2</div>
+      <div class="grid-cell">Col 3</div>
+      <div class="grid-cell">Col 4</div>
+    </div>
+
+    <span class="ds-label" style="margin-bottom:16px;display:block;">Breakpoints</span>
+    <div style="border:1px solid var(--rule);margin-bottom:48px;overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+        <thead>
+          <tr style="background:var(--paper-2);border-bottom:1px solid var(--rule);">
+            <th style="padding:12px 18px;text-align:left;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);">Name</th>
+            <th style="padding:12px 18px;text-align:left;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);">Width</th>
+            <th style="padding:12px 18px;text-align:left;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);">Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--rule-lt);">
+            <td style="padding:12px 18px;font-weight:600;color:var(--ink);">Mobile</td>
+            <td style="padding:12px 18px;font-family:'Courier New',monospace;color:var(--accent);">&lt; 540px</td>
+            <td style="padding:12px 18px;color:var(--ink-3);">Single column, stack all grids</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--rule-lt);">
+            <td style="padding:12px 18px;font-weight:600;color:var(--ink);">Tablet SM</td>
+            <td style="padding:12px 18px;font-family:'Courier New',monospace;color:var(--accent);">&lt; 640px</td>
+            <td style="padding:12px 18px;color:var(--ink-3);">Feature grid collapses to 1 column</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--rule-lt);">
+            <td style="padding:12px 18px;font-weight:600;color:var(--ink);">Tablet</td>
+            <td style="padding:12px 18px;font-family:'Courier New',monospace;color:var(--accent);">&lt; 768px</td>
+            <td style="padding:12px 18px;color:var(--ink-3);">Service list, section headers collapse</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--rule-lt);">
+            <td style="padding:12px 18px;font-weight:600;color:var(--ink);">Tablet LG</td>
+            <td style="padding:12px 18px;font-family:'Courier New',monospace;color:var(--accent);">&lt; 900px</td>
+            <td style="padding:12px 18px;color:var(--ink-3);">Dark band, nav, page header collapse</td>
+          </tr>
+          <tr>
+            <td style="padding:12px 18px;font-weight:600;color:var(--ink);">Desktop</td>
+            <td style="padding:12px 18px;font-family:'Courier New',monospace;color:var(--accent);">≥ 900px</td>
+            <td style="padding:12px 18px;color:var(--ink-3);">Full layout, max 1300px container</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Accessibility -->
+    <div class="ds-section-label">Accessibility</div>
+    <h3 style="font-family:var(--serif);font-size:1.6rem;font-weight:500;letter-spacing:-.02em;color:var(--ink);margin-bottom:12px;">Colour <i style="color:var(--accent);">Contrast</i></h3>
+    <p style="font-size:.9rem;font-weight:300;color:var(--ink-3);line-height:1.8;max-width:600px;margin-bottom:36px;">All text and interactive element combinations meet WCAG 2.1 AA (4.5:1 minimum for body text). Critical UI text should always meet AAA (7:1) where possible.</p>
+
+    <div class="a11y-grid">
+      <div class="a11y-pair">
+        <div class="a11y-bg" style="background:#1a4fff;">
+          <span class="a11y-text" style="color:#fff;">White on Accent</span>
+        </div>
+        <div class="a11y-meta">
+          <div class="a11y-ratio">5.8:1</div>
+          <div class="a11y-grade pass">AA ✓</div>
+        </div>
+      </div>
+      <div class="a11y-pair">
+        <div class="a11y-bg" style="background:#0d0d0d;">
+          <span class="a11y-text" style="color:#fff;">White on Ink</span>
+        </div>
+        <div class="a11y-meta">
+          <div class="a11y-ratio">19.6:1</div>
+          <div class="a11y-grade pass">AAA ✓</div>
+        </div>
+      </div>
+      <div class="a11y-pair">
+        <div class="a11y-bg" style="background:#fafaf8;">
+          <span class="a11y-text" style="color:#0d0d0d;">Ink on Paper</span>
+        </div>
+        <div class="a11y-meta">
+          <div class="a11y-ratio">18.6:1</div>
+          <div class="a11y-grade pass">AAA ✓</div>
+        </div>
+      </div>
+      <div class="a11y-pair">
+        <div class="a11y-bg" style="background:#fafaf8;">
+          <span class="a11y-text" style="color:#1a4fff;">Accent on Paper</span>
+        </div>
+        <div class="a11y-meta">
+          <div class="a11y-ratio">5.8:1</div>
+          <div class="a11y-grade pass">AA ✓</div>
+        </div>
+      </div>
+      <div class="a11y-pair">
+        <div class="a11y-bg" style="background:#fafaf8;">
+          <span class="a11y-text" style="color:#6b6b6b;">Ink-3 on Paper</span>
+        </div>
+        <div class="a11y-meta">
+          <div class="a11y-ratio">4.6:1</div>
+          <div class="a11y-grade pass">AA ✓</div>
+        </div>
+      </div>
+      <div class="a11y-pair">
+        <div class="a11y-bg" style="background:#fafaf8;">
+          <span class="a11y-text" style="color:#a0a0a0;">Ink-4 on Paper</span>
+        </div>
+        <div class="a11y-meta">
+          <div class="a11y-ratio">2.6:1</div>
+          <div class="a11y-grade fail">Decorative</div>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:.78rem;color:var(--ink-4);margin-top:16px;font-style:italic;">Note: --ink-4 (#A0A0A0) is used only for decorative elements (kickers, sub-labels) — never for body copy or interactive text.</p>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer style="background:var(--dark);padding:40px 52px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+  <div>
+    <div style="font-size:.88rem;font-weight:700;color:#fff;margin-bottom:4px;">Comprehensive IT Solutions (CITS)</div>
+    <div style="font-size:.72rem;color:rgba(255,255,255,.3);">Design System v1.0 · CITS-global.co.uk · April 2026</div>
+  </div>
+  <a href="index.html" style="font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.35);transition:color .18s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.35)'">← Back to Website</a>
+</footer>
+
+</body>
+</html>
