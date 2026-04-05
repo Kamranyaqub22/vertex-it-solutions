@@ -97,7 +97,7 @@
 //   CRM_API_KEY   → the value of LEAD_CAPTURE_API_KEY from your CRM's .env file
 (function () {
   var CRM_ENDPOINT = 'https://my-crm-zeta-neon.vercel.app/deals';
-  var CRM_API_KEY  = 'YOUR_LEAD_CAPTURE_API_KEY';
+  var CRM_API_KEY  = 'cits-crm-leads-2026';
 
   function handleLeadForm(form) {
     form.addEventListener('submit', function (e) {
