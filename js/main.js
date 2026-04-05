@@ -96,7 +96,7 @@
 //                   or http://localhost:3000/api/leads for local testing
 //   CRM_API_KEY   → the value of LEAD_CAPTURE_API_KEY from your CRM's .env file
 (function () {
-  var CRM_ENDPOINT = 'https://my-crm-zeta-neon.vercel.app/deals';
+  var CRM_ENDPOINT = 'https://my-crm-zeta-neon.vercel.app/api/public/leads';
   var CRM_API_KEY  = 'cits-crm-leads-2026';
 
   function handleLeadForm(form) {
@@ -118,8 +118,8 @@
 
       // Build payload — only first_name and last_name are required
       var data = {
-        first_name: (form.querySelector('[name="first_name"]') || {}).value || '',
-        last_name:  (form.querySelector('[name="last_name"]')  || {}).value || '',
+        firstName: (form.querySelector('[name="first_name"]') || {}).value || '',
+        lastName:  (form.querySelector('[name="last_name"]')  || {}).value || '',
         company:    (form.querySelector('[name="company"]')    || {}).value || undefined,
         email:      (form.querySelector('[name="email"]')      || {}).value || undefined,
         phone:      (form.querySelector('[name="phone"]')      || {}).value || undefined,
