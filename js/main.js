@@ -89,3 +89,83 @@
     }
   });
 })();
+
+// ── CRM Lead Capture ─────────────────────────────────────────────────────────
+// Replace the two placeholder values below:
+//   CRM_ENDPOINT  → your live API URL, e.g. https://crm.citsglobal.co.uk/api/leads
+//                   or http://localhost:3000/api/leads for local testing
+//   CRM_API_KEY   → the value of LEAD_CAPTURE_API_KEY from your CRM's .env file
+(function () {
+  var CRM_ENDPOINT = 'https://my-crm-zeta-neon.vercel.app/deals';
+  var CRM_API_KEY  = 'YOUR_LEAD_CAPTURE_API_KEY';
+
+  function handleLeadForm(form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Honeypot: reject if bot filled the hidden checkbox
+      var botcheck = form.querySelector('[name="botcheck"]');
+      if (botcheck && botcheck.checked) return;
+
+      var btn = form.querySelector('[type="submit"]');
+      var originalText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      // Remove any previous feedback
+      var existing = form.querySelector('.form-feedback');
+      if (existing) existing.remove();
+
+      // Build payload — only first_name and last_name are required
+      var data = {
+        first_name: (form.querySelector('[name="first_name"]') || {}).value || '',
+        last_name:  (form.querySelector('[name="last_name"]')  || {}).value || '',
+        company:    (form.querySelector('[name="company"]')    || {}).value || undefined,
+        email:      (form.querySelector('[name="email"]')      || {}).value || undefined,
+        phone:      (form.querySelector('[name="phone"]')      || {}).value || undefined,
+        service:    (form.querySelector('[name="service"]')    || {}).value || undefined,
+        employees:  (form.querySelector('[name="employees"]')  || {}).value || undefined,
+        message:    (form.querySelector('[name="message"]')    || {}).value || undefined,
+        source_url: window.location.href
+      };
+
+      // Strip empty optional fields so the CRM doesn't see empty strings
+      Object.keys(data).forEach(function (k) {
+        if (data[k] === '' || data[k] === undefined) delete data[k];
+      });
+
+      fetch(CRM_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-API-Key': CRM_API_KEY
+        },
+        body: JSON.stringify(data)
+      })
+      .then(function (res) {
+        if (!res.ok) throw new Error('server_error');
+        return res.json();
+      })
+      .then(function () {
+        var msg = document.createElement('p');
+        msg.className = 'form-feedback form-feedback--ok';
+        msg.textContent = 'Thank you — we\'ll be in touch within one working day.';
+        form.reset();
+        form.appendChild(msg);
+      })
+      .catch(function () {
+        var msg = document.createElement('p');
+        msg.className = 'form-feedback form-feedback--err';
+        msg.textContent = 'Something went wrong. Please try again or call us on 0800 000 0000.';
+        form.appendChild(msg);
+      })
+      .finally(function () {
+        btn.disabled = false;
+        btn.textContent = originalText;
+      });
+    });
+  }
+
+  // Attach to every enquiry form on the page
+  document.querySelectorAll('form.crm-form').forEach(handleLeadForm);
+})();

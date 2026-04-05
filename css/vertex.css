@@ -278,6 +278,10 @@ img { display: block; max-width: 100%; }
 .form-group textarea { resize: vertical; min-height: 100px; }
 .btn-submit { width: 100%; padding: 14px; background: var(--ink); color: #fff; border: none; cursor: pointer; font-family: var(--sans); font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; transition: background .2s; }
 .btn-submit:hover { background: var(--accent); }
+.btn-submit:disabled { opacity: .55; cursor: not-allowed; }
+.form-feedback { margin-top: 18px; padding: 14px 18px; font-size: .85rem; font-weight: 500; line-height: 1.5; }
+.form-feedback--ok  { background: #ecfdf5; color: #065f46; border-left: 3px solid #10b981; }
+.form-feedback--err { background: #fef2f2; color: #7f1d1d; border-left: 3px solid #ef4444; }
 
 /* ── Info items ─────────────────────────────────── */
 .info-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--rule); }
