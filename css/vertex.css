@@ -539,6 +539,7 @@ footer { border-top: 1px solid var(--rule); background: var(--paper); }
     display: inline-flex !important;
     margin: 20px 24px 0 !important;
     align-self: flex-start;
+    color: #fff !important;
   }
 }
 
