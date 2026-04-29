@@ -156,7 +156,7 @@
       .catch(function () {
         var msg = document.createElement('p');
         msg.className = 'form-feedback form-feedback--err';
-        msg.textContent = 'Something went wrong. Please try again or call us on 0800 000 0000.';
+        msg.textContent = 'Something went wrong. Please try again or call us on 0208 638 6438.';
         form.appendChild(msg);
       })
       .finally(function () {
