@@ -150,22 +150,27 @@
         return res.json();
       });
 
-      // Best-effort email notification via Web3Forms (never blocks the CRM result)
+      // Email notification via Web3Forms
       var emailRequest = fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          subject:    emailSubject,
-          message:    emailBody,
-          from_name:  (data.firstName || '') + ' ' + (data.lastName || ''),
-          email:      data.email || 'no-reply@citsglobal.co.uk'
+          access_key:   WEB3FORMS_KEY,
+          subject:      emailSubject,
+          message:      emailBody,
+          from_name:    (data.firstName || '') + ' ' + (data.lastName || ''),
+          replyto:      data.email || '',
+          botcheck:     ''
         })
-      }).catch(function () { /* silent — email is supplementary */ });
+      })
+      .then(function (res) { return res.json(); })
+      .then(function (res) {
+        if (!res.success) console.warn('Web3Forms error:', res.message);
+      })
+      .catch(function (err) { console.warn('Web3Forms fetch failed:', err); });
 
       Promise.all([crmRequest, emailRequest])
-      .then(function (results) {
-        // results[0] is the CRM response; if it threw, we land in .catch below
+      .then(function () {
         var msg = document.createElement('p');
         msg.className = 'form-feedback form-feedback--ok';
         msg.textContent = 'Thank you — we\'ll be in touch within one working day.';
