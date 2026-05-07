@@ -90,14 +90,14 @@
   });
 })();
 
-// ── CRM Lead Capture ─────────────────────────────────────────────────────────
-// Replace the two placeholder values below:
-//   CRM_ENDPOINT  → your live API URL, e.g. https://crm.citsglobal.co.uk/api/leads
-//                   or http://localhost:3000/api/leads for local testing
-//   CRM_API_KEY   → the value of LEAD_CAPTURE_API_KEY from your CRM's .env file
+// ── CRM Lead Capture + Email Notification ────────────────────────────────────
+// CRM_ENDPOINT / CRM_API_KEY  → your live CRM API
+// WEB3FORMS_KEY               → free key from https://web3forms.com
+//                               Enter info@citsglobal.co.uk there to get one.
 (function () {
-  var CRM_ENDPOINT = 'https://my-crm-zeta-neon.vercel.app/api/public/leads';
-  var CRM_API_KEY  = 'cits-crm-leads-2026';
+  var CRM_ENDPOINT   = 'https://my-crm-zeta-neon.vercel.app/api/public/leads';
+  var CRM_API_KEY    = 'cits-crm-leads-2026';
+  var WEB3FORMS_KEY  = '4d3df768-33b5-485b-8703-c7ce1df223be';
 
   function handleLeadForm(form) {
     form.addEventListener('submit', function (e) {
@@ -134,19 +134,38 @@
         if (data[k] === '' || data[k] === undefined) delete data[k];
       });
 
-      fetch(CRM_ENDPOINT, {
+      // Build a plain-text summary for the email notification
+      var emailSubject = 'New enquiry from ' + (data.firstName || '') + ' ' + (data.lastName || '') + (data.company ? ' (' + data.company + ')' : '');
+      var emailBody    = Object.keys(data).map(function (k) { return k + ': ' + data[k]; }).join('\n');
+
+      var crmRequest = fetch(CRM_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'X-API-Key': CRM_API_KEY
         },
         body: JSON.stringify(data)
-      })
-      .then(function (res) {
+      }).then(function (res) {
         if (!res.ok) throw new Error('server_error');
         return res.json();
-      })
-      .then(function () {
+      });
+
+      // Best-effort email notification via Web3Forms (never blocks the CRM result)
+      var emailRequest = fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject:    emailSubject,
+          message:    emailBody,
+          from_name:  (data.firstName || '') + ' ' + (data.lastName || ''),
+          email:      data.email || 'no-reply@citsglobal.co.uk'
+        })
+      }).catch(function () { /* silent — email is supplementary */ });
+
+      Promise.all([crmRequest, emailRequest])
+      .then(function (results) {
+        // results[0] is the CRM response; if it threw, we land in .catch below
         var msg = document.createElement('p');
         msg.className = 'form-feedback form-feedback--ok';
         msg.textContent = 'Thank you — we\'ll be in touch within one working day.';
