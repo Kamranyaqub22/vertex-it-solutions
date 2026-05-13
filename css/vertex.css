@@ -628,3 +628,42 @@ footer { border-top: 1px solid var(--rule); background: var(--paper); }
 .policy-body ul { padding-left: 20px; margin-bottom: 14px; }
 .policy-body a { color: var(--accent); }
 .policy-updated { font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 32px; display: block; }
+
+/* ═══════════════════════════════════════════════════════════
+   FLOATING WHATSAPP BUTTON
+   ═══════════════════════════════════════════════════════════ */
+.wa-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: .875rem;
+  font-weight: 600;
+  padding: 13px 20px 13px 16px;
+  border-radius: 50px;
+  box-shadow: 0 4px 20px rgba(37,211,102,.45);
+  transition: transform .2s ease, box-shadow .2s ease;
+  white-space: nowrap;
+}
+.wa-float:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(37,211,102,.55);
+  color: #fff;
+}
+.wa-float__icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+}
+@media (max-width: 500px) {
+  .wa-float { padding: 14px; border-radius: 50%; bottom: 20px; right: 20px; }
+  .wa-float__label { display: none; }
+}
